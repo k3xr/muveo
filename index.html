@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="ofertas de clases"/>
     <meta charset="keywords" content="clases"/>
     <!-- Bootstrap -->
@@ -22,20 +22,90 @@
     <![endif]-->
 </head>
 <body>
-    <header id="espacioTitulo">
-        <hgroup>
-            <h1 id="tituloPrincipal">Muveo</h1>
-            <h2 id="subtituloPrincipal">Busca tu profesor particular o encuentra tu trabajo ideal</h2>
-        </hgroup>
-    </header>
 
-    <div id="selector">
-        ¿Qué buscas?
-        <div id="clases"><a href="clases.html">CLASES</a></div>
-        <div id="trabajo"><a href="trabajo.html">TRABAJO</a></div>
+<nav class="navbar navbar-default" id="navigationHeader">
+    <div class="container-fluid">
+        <!-- Brand -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Muveo</a>
+        </div>
+
+        <!-- Login Form with button -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <form class="navbar-form" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="User">
+                            <input type="text" class="form-control" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </ul>
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid" id="container-full">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 text-center v-center" id="PanelInicio">
+
+            <h1 class="text-inverse">¿Qué buscas?</h1>
+            <p class="text-inverse">Busca tu profesor particular o encuentra tu trabajo ideal</p>
+            <div class="row">
+                <div class="col-md-6 col-xs-6 v-center">
+                    <button class="btn btn-lg btn-primary" id="clases">Clases</button>
+                </div>
+                <div class="col-md-6 col-xs-6 v-center">
+                    <button class="btn btn-lg btn-primary" id="trabajo" data-toggle="modal" data-target="#loginModal">Trabajo</button>
+                </div>
+                <!-- Modal para login -->
+                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aira-hidden="true">
+                                    &times;
+                                </button>
+                                <h3>Inicia sesión para continuar</h3>
+                                <h5>¿No tienes cuenta? ¡Registrate <a href=""> aquí</a> en menos de un minuto!</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
+                                        <div class="col-xs-6">
+                                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
+                                        <div class="col-xs-6">
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">
+                                    Iniciar sesión
+                                </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
     </div>
+</div>
 
-    <div id="lema">¡Tus clases al mejor precio y cerca de tu casa!</div>
+<div id="lema">¡Tus clases al mejor precio y cerca de tu casa!</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

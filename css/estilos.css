@@ -4,6 +4,10 @@
     border: 0px;
 }
 
+#navigationHeader{
+    margin-bottom: 0px;
+}
+
 body{
     height: 100%;
     width: 100%;
@@ -12,6 +16,15 @@ body{
 
 #subtituloPrincipal{
     font: bold 14px verdana, sans-serif;
+}
+
+#container-full{
+    background-image: url('http://i.imgur.com/NowYKD7.jpg');
+    color: #000000;
+    margin: 0 auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 100%;
 }
 
 #espacioTitulo{
@@ -38,12 +51,14 @@ body{
     width: 50%;
     height: 20%;
     border: solid;
+    border-width: 0 0 0 0;
 }
 
 #trabajo{
     width: 50%;
     height: 20%;
     border: solid;
+    border-width: 0 0 0 0;
 }
 
 #lema{

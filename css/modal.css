@@ -1,0 +1,9 @@
+.form-group{
+    margin: 5px;
+}
+
+.modal-body{
+    background-color: #31b0d5;
+    color: #ffffff;
+    text-shadow: #080808;
+}
