@@ -23,7 +23,7 @@ if (login_check($mysqli) == true) {
         <!--Estilos-->
         <link rel="stylesheet" href="css/estilos.css">
 
-        <title>Muveo</title>
+       <title>Muveo</title>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +50,7 @@ if (login_check($mysqli) == true) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Muveo</a>
+                    <a class="navbar-brand" href="http://muveo.sytes.net/">Muveo</a>
 
                 </div>
 
@@ -60,7 +60,7 @@ if (login_check($mysqli) == true) {
                         if (login_check($mysqli) == true) {
                             echo "<p>Currently logged " . $logged . " as " . htmlentities($_SESSION['username']) . ". <a href='includes/logout.php'>Log out</a></p>";
                         } else {
-                            echo "<p>Currently logged " . $logged . ". <a href='register.php'>register</a></p>";
+                            //echo "<p>Currently logged " . $logged . ". <a href='register.php'>register</a></p>";
                         }
                         ?>
                     </div>
@@ -109,6 +109,13 @@ if (login_check($mysqli) == true) {
                                     </div>
                                 </div>
                             </div>
+                            <!--INI: Boton Atras-->
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-6">
+                                    <button class="btn btn-lg btn-primary" type="button" id="botonAtras" style="margin-top: 10px;">Atrás</button>
+                                </div>
+                            </div>
+                            <!--FIN: Boton Atras-->
                         </div>
                         <!-- FIN: Search Bar-->
                         <!-- Modal para login -->
@@ -167,15 +174,16 @@ if (login_check($mysqli) == true) {
         <!-- INI: slideUP-->
         <script>
             $("#clases").click(function() {
-                $( "#clases" ).hide("slow");
-                $( "#trabajo" ).hide("slow");
-                document.getElementById("SearchBar").style.visibility="visible" ;
-
+                $( "#clases" ).hide(400);
+                $( "#trabajo" ).hide(400, function()
+                {
+                    document.getElementById("SearchBar").style.visibility = "visible";
+                });
             });
-            $( "#trabajo" ).click(function() {
-                $( "#clases" ).hide("slow");
-                $( "#trabajo" ).hide("slow");
-                document.getElementById("SearchBar").style.visibility="visible" ;
+            $("#botonAtras").click(function() {
+                $( "#clases" ).show(400);
+                $( "#trabajo" ).show(400);
+                document.getElementById("SearchBar").style.visibility="hidden" ;
             });
         </script><!-- FIN: slideUP-->
     </body>

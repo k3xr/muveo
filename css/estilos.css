@@ -48,20 +48,13 @@ body{
     text-align: center;
 }
 
-#clases{
-    width: 50%;
-    height: 20%;
-    border: solid;
-    border-width: 0 0 0 0;
-    margin: 5px;
-}
 
-#trabajo{
+#trabajo,#botonAtras,#clases {
     width: 50%;
     height: 20%;
     border: solid;
     border-width: 0 0 0 0;
-    margin: 5px;
+    margin: 5px 5px 5px 5px;
 }
 
 #lema{
