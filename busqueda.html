@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="busqueda de ofertas de clases"/>
+    <meta charset="keywords" content="busqueda, clases"/>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--Estilos-->
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/busqueda.css">
+
+    <title>Busca en Muveo</title>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- top navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="busqueda.html">Muveo</a>
+
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+            <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
+                <div class="form-group">
+                    <input type="text" name="email" class="form-control" placeholder="Usuario">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="password" class="form-control" placeholder="Contraseña">
+                </div>
+                <button type="submit" class="btn btn-default" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <!-- sidebar -->
+        <div class="col-xs-12 col-md-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav" style="background: #ffffff">
+                <li><a href="#">Everyone</a></li>
+                <li><a href="#">Individual</a></li>
+                <li><a href="#">Companies</a></li>
+            </ul>
+        </div>
+
+        <!-- search bar -->
+        <div class="col-xs-12 col-md-9">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- search bar -->
+
+        <!-- main area -->
+        <div class="col-xs-12 col-md-9" id="mainPanel">
+            <div class="panel panel-info">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Resultados Búsqueda</div>
+
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-2 text-center">
+                                        <img src="http://muveo.sytes.net/images/avatar_test.jpg" alt="bootsnipp"
+                                             class="img-rounded img-responsive" />
+                                    </div>
+                                    <div class="col-xs-12 col-md-8 section-box">
+                                        <h3><a href="http://muveo.sytes.net/busqueda.html" target="_blank">
+                                            Clases Particulares Desarrollo Web </a>
+                                        </h3>
+                                        <p>
+                                            El mejor profesor (cariñosa osa) para que aprendas HTML/CSS/JS en tan solo 6 días!</p>
+                                        <hr />
+                                        <div class="row rating-desc">
+                                            <div class="col-md-12">
+                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
+                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                </span><span class="glyphicon glyphicon-star"></span>(36)<span class="separator">|</span>
+                                                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+                                                <span class="glyphicon glyphicon-euro"></span>20/Hora
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2 section-box hireButton">
+                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-2 text-center">
+                                        <img src="https://lh6.googleusercontent.com/-hPEfH0I4deI/UPyuaIgRITI/AAAAAAAAFYo/Zdk1f2rO--A/s240/CARA%2520DELE%2520%25282%2529.png" alt="bootsnipp"
+                                             class="img-rounded img-responsive" />
+                                    </div>
+                                    <div class="col-xs-12 col-md-8 section-box">
+                                        <h3><a href="http://muveo.sytes.net/busqueda.html" target="_blank">
+                                            Clases de Oso Yoga en Fuenlabrada CITY! </a>
+                                        </h3>
+                                        <p>
+                                            Se busca clases de Oso yoga en puntos conflictivos de Madrid!</p>
+                                        <hr />
+                                        <div class="row rating-desc">
+                                            <div class="col-xs-12 col-md-12">
+                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
+                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                </span><span class="glyphicon glyphicon-star"></span>(3)<span class="separator">|</span>
+                                                <span class="glyphicon glyphicon-comment"></span>(2 Comments)
+                                                <span class="glyphicon glyphicon-euro"></span>200/Hora (Zona conflictiva)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-2 section-box hireButton">
+                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="list-group-item">Resultado 3</li>
+                    <li class="list-group-item">Resultado 4</li>
+                    <li class="list-group-item">Resultado 5</li>
+                </ul>
+                <div class="panel-footer text-center">
+                    <nav>
+                        <ul class="pagination ">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div><!-- /.col-xs-12 main -->
+    </div><!--/.row-->
+</div><!--/.container-->
+<!-- Modal para login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h3>Inicia sesión para continuar</h3>
+                <h5>¿No tienes cuenta? ¡Registrate <a href=""> aquí</a> en menos de un minuto!</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
+                        <div class="col-xs-6">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    Iniciar sesión
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal para login -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

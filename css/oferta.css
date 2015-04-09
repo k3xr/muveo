@@ -1,0 +1,190 @@
+.btn-primary {
+	background-color: #2B6FB6;
+	border: 0px;
+	padding: 8px;
+	font-weight: bold;
+}
+
+.estrella {
+    color: #ffd700;
+}
+
+.navbar{
+	border-radius: 0px;
+}
+
+.navbar-brand {
+	color: white !important;
+}
+
+.modal-header {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.form-group {
+	margin-bottom: 5px;
+}
+
+.tag-list {
+
+}
+
+.modal-open .no-jump {
+overflow-y:scroll;
+}
+
+#rating {
+	margin: 0px;
+}
+
+#avatar {
+	max-width: 225px;
+	max-height: 225px;
+	border: 2px;
+	border-style: solid;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	border-radius: 3px;
+}
+
+#bio {
+	max-height: 200px;
+}
+
+
+#btn-contratar {
+	float: right;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#datos-oferta-section{
+	font-size: 13px;
+	background-color:#222;
+}
+
+#datos-oferta {
+	display: inline;
+}
+
+#map{
+	display:inline-block; 
+	background-color: grey;
+	left: auto;
+	right: auto;
+	width: 300px;
+	height: 300px; 
+	max-width: 300px; 
+	max-height: 300px;
+	text-align: center;
+	vertical-align: central;
+}
+
+#main-container {
+	
+}
+
+#overview {
+	background-color:#286090;
+}
+
+#loginModal {
+	overflow-y: auto;
+}
+
+body {
+	margin-top: 70px;
+	background-image: url('http://i.imgur.com/NowYKD7.jpg');
+}
+
+aside {
+	border-radius: 5px;
+	float: left;
+	width: 280px;
+	padding: 20px;
+	margin: 20px;
+	margin-top: 0px;
+	padding-top: 0px;
+	/*height: 955px;*/
+	/*max-height: 955px;*/
+	color: white;
+	text-align: left;
+}
+
+section {
+	border-radius: 5px;
+	float: left;
+	padding: 20px;
+	margin-bottom: 50px;
+	/*height: 1000px;*/
+	color: white;
+	text-align: justify;
+}
+
+/* Incluir en estilos.css */
+footer {
+    height:50px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+	padding: 10px;
+    margin-bottom:0px;
+	color: white;
+	background-color: #222;
+	text-align: center;
+}
+
+div > button {
+	margin: 5px;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+p {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+h5, h6 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+a > aside { 
+	color: #428BCA;
+}
+
+a.tag {
+	font-weight: bold;
+	/*font-style: italic;*/
+	text-align: center;
+	/*border: solid 2px;*/
+	padding: 3px;
+	/*box-shadow: 1px 1px;*/
+	box-shadow: 0 0 1px #888;
+	border-radius: 4px;
+	background-color: grey;
+	color: white;
+	font-weight: 2px;
+	margin: 2px;
+}
+
+/* estilos.css */
+a.navbar-brand {
+	padding-top: 0px;
+}
+
+/* estilos.css */
+
+#navbar-main {
+	border-top-width: 0px;
+	padding-top: 0px;
+}
+
+

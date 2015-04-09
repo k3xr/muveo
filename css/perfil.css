@@ -1,0 +1,52 @@
+/* Estrellas de valoración
+----------------------------------------------- */
+.val-fieldset {
+    width:100px;
+    border:none;
+    font-weight:bold;
+    font-size:12px;
+}
+.valoracion {
+    width: 100px;
+    height: 21px;
+    display: block;
+    background:url(http://lh5.googleusercontent.com/-Sp-iHFztZdc/UVD89O9oM1I/AAAAAAAAEU0/Xh-FBDaWyJY/s000/estrellas.png) 0 0 no-repeat;
+}
+.val-0 {background-position: -100px -0;}
+.val-5 {background-position: -81px -21px;}
+.val-10 {background-position: -81px 0;}
+.val-15 {background-position: -61px -21px;}
+.val-20 {background-position: -60px 0;}
+.val-25 {background-position: -40px -21px;}
+.val-30 {background-position: -40px 0;}
+.val-35 {background-position: -21px -21px;}
+.val-40 {background-position: -21px 0;}
+.val-45 {background-position: 0 -21px;}
+.val-50 {background-position: 0 0;}
+
+
+#container-default{
+    border-radius: 5px;
+    background-color: #222;
+    color: #ffffff;
+    margin: 0 auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 60%;
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+body {
+    margin-top: 90px;
+    background-image: url('http://i.imgur.com/NowYKD7.jpg');
+}
+
+footer{
+    color: #ffffff;
+    background-color: #222;
+}
+
+#avatar{
+    max-width: 100%;
+}

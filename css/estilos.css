@@ -19,7 +19,7 @@ body{
 }
 
 #container-full{
-    background-image: url('http://i.imgur.com/NowYKD7.jpg');
+    background-image: url("/images/backgroundIndex.jpg");
     color: #000000;
     margin: 0 auto;
     min-height: 100%;
@@ -65,4 +65,17 @@ body{
     visibility: hidden;
 }
 
+footer {
+    height:50px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    padding: 10px;
+    color: black;
+    background-color: #ffffff;
+    text-align: center;
+}
 
+.navbar-brand{
+    padding: 0px;
+}
