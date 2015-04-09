@@ -50,7 +50,7 @@ if (isset($_GET['error'])) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://muveo.sytes.net/"><img src="images/icon_white.png"></img> </a>
+            <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></img> </a>
 
         </div>
 
