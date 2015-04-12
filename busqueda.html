@@ -9,6 +9,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!--Estilos-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-slider.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/busqueda.css">
 
@@ -56,6 +58,13 @@
         <!-- sidebar -->
         <div class="col-xs-12 col-md-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav" style="background: #ffffff">
+                <li>Precio: <br><br><input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/></li>
+                <br>
+                <li><span id="ex6CurrentSliderValLabel">Comentarios: <span id="ex6SliderVal">3 </span></span><input id="ex7-enabled" type="checkbox"/>
+                    <input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-enabled="false" data-slider-value="0"/&t
+                </li>
+                <br>
+                <br>
                 <li><a href="#">Everyone</a></li>
                 <li><a href="#">Individual</a></li>
                 <li><a href="#">Companies</a></li>
@@ -313,6 +322,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-slider.js"></script>
+<script>
+    $("#ex2").slider({});
+    $("#ex6").slider();
+    $("#ex6").on("slide", function(slideEvt) {
+        $("#ex6SliderVal").text(slideEvt.value);
+    });
+    // With JQuery
+    $("#ex6").slider();
+    $("#ex7-enabled").click(function() {
+        if(this.checked) {
+            // With JQuery
+            $("#ex6").slider("enable");
+        }
+        else {
+            // With JQuery
+            $("#ex6").slider("disable");
+        }
+    });
+</script>
 
 </body>
 </html>
