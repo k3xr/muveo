@@ -11,6 +11,9 @@
     height: 21px;
     display: block;
     background:url(http://lh5.googleusercontent.com/-Sp-iHFztZdc/UVD89O9oM1I/AAAAAAAAEU0/Xh-FBDaWyJY/s000/estrellas.png) 0 0 no-repeat;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .val-0 {background-position: -100px -0;}
 .val-5 {background-position: -81px -21px;}
@@ -27,26 +30,85 @@
 
 #container-default{
     border-radius: 5px;
-    background-color: #222;
-    color: #ffffff;
+    color: #31708F;
     margin: 0 auto;
     min-height: 100%;
     overflow: hidden;
-    width: 60%;
-    padding-top: 50px;
-    margin-bottom: 50px;
+    width: 65%;
+    padding-top: 40px;
+
+    background-color: transparent;
 }
 
 body {
     margin-top: 90px;
-    background-image: url('http://i.imgur.com/NowYKD7.jpg');
+    background-image: url('http://www.mafazo.com/images/radial-gradient-bkg.jpg');
 }
 
 footer{
-    color: #ffffff;
-    background-color: #222;
+    color: black;
+    background-color: #ffffff;
 }
 
 #avatar{
     max-width: 100%;
+}
+
+#info-pral{
+    border: 1px solid #029DD6;
+    border-radius: 5px;
+
+    padding-top: 10px;
+    margin-left: 15px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    background-color: #D9EDF7;
+}
+
+#ofertas{
+    border: 1px solid #029DD6;
+    border-radius: 5px;
+    float: right;
+
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+
+    background-color: #D9EDF7;
+}
+
+#conocimientos{
+    border: 1px solid #029DD6;
+    border-radius: 5px;
+    float: left;
+
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+    background-color: #D9EDF7;
+}
+
+#conocimientos > h4{
+    color: #31708F;
+}
+
+hr{
+    border-color: #029DD6;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.btn-add{
+    float: right;
+    margin: 10px;
+}
+
+li{
+    padding-bottom: 5px;
+    max-width: 300px;
 }

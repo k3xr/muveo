@@ -1,8 +1,22 @@
-.btn-primary {
-	background-color: #2B6FB6;
+button.btn-primary {
+    text-shadow: 0px 1px 0px #000;
+	/*background-color: #2B6FB6;*/
 	border: 0px;
 	padding: 8px;
 	font-weight: bold;
+    background-image: linear-gradient(to bottom, #337AB7 0px, #265A88 100%);
+    /*background-image: linear-gradient(to bottom, #2B6FB6 0px, #337ab7 100%);*/
+}
+
+button.btn-primary:hover {
+	background-color: #337ab7;
+	border: 0px;
+	padding: 8px;
+	font-weight: bold;
+}
+
+*[hidden]{
+    display: none;
 }
 
 .estrella {
@@ -11,10 +25,6 @@
 
 .navbar{
 	border-radius: 0px;
-}
-
-.navbar-brand {
-	color: white !important;
 }
 
 .modal-header {
@@ -42,7 +52,8 @@ overflow-y:scroll;
 #avatar {
 	max-width: 225px;
 	max-height: 225px;
-	border: 2px;
+	border: 1px;
+    border-color: #BCE8F1;
 	border-style: solid;
 	margin-left: auto;
 	margin-right: auto;
@@ -63,11 +74,11 @@ overflow-y:scroll;
 
 #datos-oferta-section{
 	font-size: 13px;
-	background-color:#222;
+	background-color:#ffffff;
+    display: block;
 }
 
 #datos-oferta {
-	display: inline;
 }
 
 #map{
@@ -88,16 +99,27 @@ overflow-y:scroll;
 }
 
 #overview {
-	background-color:#286090;
+    display: inline-block;
+    border: 1px;
+    border-style: solid;
+    border-color: #BCE8F1;
+    color: #31708F;
+	background-color:#D9EDF7;
+	min-height: 1000px;
 }
 
 #loginModal {
 	overflow-y: auto;
 }
 
+nav {
+    background-color: #ffffff !important;
+}
+
 body {
 	margin-top: 70px;
-	background-image: url('http://i.imgur.com/NowYKD7.jpg');
+	/*background-image: url('http://i.imgur.com/NowYKD7.jpg');*/
+    background-color: #888888;
 }
 
 aside {
@@ -115,13 +137,15 @@ aside {
 }
 
 section {
+    clear: both;
 	border-radius: 5px;
 	float: left;
 	padding: 20px;
 	margin-bottom: 50px;
 	/*height: 1000px;*/
-	color: white;
+	color: black;
 	text-align: justify;
+    border: solid 1px #d6d6d6;
 }
 
 /* Incluir en estilos.css */
@@ -132,9 +156,10 @@ footer {
     right:0px;
 	padding: 10px;
     margin-bottom:0px;
-	color: white;
-	background-color: #222;
+	color: black;
+	background-color: #ffffff;
 	text-align: center;
+    font-size: smaller;
 }
 
 div > button {
@@ -156,23 +181,29 @@ h5, h6 {
 	margin-bottom: 10px;
 }
 
-a > aside { 
+aside > a {
 	color: #428BCA;
+}
+
+aside > hr {
+    border-color: #BCE8F1;
 }
 
 a.tag {
 	font-weight: bold;
-	/*font-style: italic;*/
 	text-align: center;
-	/*border: solid 2px;*/
 	padding: 3px;
-	/*box-shadow: 1px 1px;*/
 	box-shadow: 0 0 1px #888;
 	border-radius: 4px;
-	background-color: grey;
-	color: white;
-	font-weight: 2px;
+	background-color: lightgrey;
+	color: grey;
 	margin: 2px;
+}
+
+a.tag:hover{
+    background-color: grey;
+    color: white;
+    text-decoration: none;
 }
 
 /* estilos.css */

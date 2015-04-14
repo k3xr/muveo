@@ -24,35 +24,38 @@
     <![endif]-->
 </head>
 <body>
-<!-- top navbar -->
-<div class="navbar navbar-default navbar-fixed-top">
+<!-- Header -->
+<nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
+            <!-- Boton login para dispositivos moviles-->
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Muveo</a>
-
+            <!-- Brand -->
+            <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
         </div>
-
-        <div class="navbar-collapse collapse" id="navbar-main">
-
+        <!-- Login Form with button -->
+        <div id="navbar-main" class="collapse navbar-collapse" >
             <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
                 <div class="form-group">
-                    <input type="text" name="email" class="form-control" placeholder="Usuario">
+                    <!-- Username -->
+                    <input class="form-control" name="username" placeholder="Usuario" type="text">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="password" class="form-control" placeholder="Contraseña">
+                    <!-- Password -->
+                    <input class="form-control" name="password" placeholder="Contraseña" type="password">
                 </div>
-                <button type="submit" class="btn btn-default" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password)">Iniciar sesión</button>
             </form>
-
         </div>
     </div>
-</div>
-
+</nav>
+<!-- Header End-->
 <div class="container">
     <div class="row row-offcanvas row-offcanvas-left">
         <!-- sidebar -->
@@ -104,10 +107,10 @@
                                     </div>
                                     <div class="col-xs-12 col-md-8 section-box">
                                         <h3><a href="busqueda.html" target="_blank">
-                                            Clases Particulares Desarrollo Web </a>
+                                            Clases particulares desarrollo web </a>
                                         </h3>
                                         <p>
-                                            El mejor profesor (cariñosa osa) para que aprendas HTML/CSS/JS en tan solo 6 días!</p>
+                                            Aprende HTML/CSS/JS en tan solo 6 días!</p>
                                         <hr />
                                         <div class="row rating-desc">
                                             <div class="col-md-12">
@@ -120,7 +123,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +135,7 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-xs-12 col-md-2 text-center">
-                                        <img src="/images/chicaFea.png" alt="bootsnipp"
+                                        <img src="http://rumberanetwork.com/wp-content/uploads/2014/06/cara-delevingne-wallpaper-1848598319.jpg" alt="bootsnipp"
                                              class="img-rounded img-responsive" />
                                     </div>
                                     <div class="col-xs-12 col-md-8 section-box">
@@ -153,7 +156,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +187,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +218,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +249,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
+                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
                                     </div>
                                 </div>
                             </div>

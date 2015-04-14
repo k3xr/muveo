@@ -1,0 +1,23 @@
+input.texto{
+	border-radius: 5px;
+    border: 2px solid #0080FF;
+}
+
+input, textarea {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+form {
+    padding-top: 35px;
+    padding-right: 50px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+}
+
+body {
+	background-color: #ADD6FF;
+}
+
+

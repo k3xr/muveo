@@ -14,18 +14,26 @@ body{
     position:absolute;
 }
 
+#PanelInicio {
+    color: white;
+    text-shadow: 0px 1px 1px #222;
+    font-weight: bolder;
+    font-size: larger;
+}
+
 #subtituloPrincipal{
     font: bold 14px verdana, sans-serif;
 }
 
 #container-full{
     background-image: url("/images/backgroundIndex.jpg");
-    color: #000000;
+    /*opacity: 0.7;*/
+    /*color: #000000;*/
     margin: 0 auto;
     min-height: 100%;
     overflow: hidden;
     width: 100%;
-    padding-top: 150px;
+    padding-top: 10%; /* 150px */
 }
 
 #espacioTitulo{
@@ -40,6 +48,10 @@ body{
 
 #tituloPrincipal{
     font: bold 36px verdana, sans-serif;
+}
+
+#loginModal{
+    text-align: center;
 }
 
 #selector{
@@ -78,4 +90,26 @@ footer {
 
 .navbar-brand{
     padding: 0px;
+}
+
+nav {
+    background-color: #ffffff !important;
+}
+
+button.btn-primary {
+    text-shadow: 0px 1px 0px #000;
+    /*background-color: #2B6FB6;*/
+    border: 0px;
+    padding: 8px;
+    font-weight: bold;
+    background-image: linear-gradient(to bottom, #337AB7 0px, #265A88 100%);
+    /*background-image: linear-gradient(to bottom, #2B6FB6 0px, #337ab7 100%);*/
+}
+
+button.btn-primary:hover {
+    /*background-color: #337ab7;*/
+    background-image: linear-gradient(to bottom, #005684 0px, #265A88 100%);
+    border: 0px;
+    padding: 8px;
+    font-weight: bold;
 }
