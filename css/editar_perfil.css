@@ -41,6 +41,22 @@ footer{
     font-size: smaller;
 }
 
+#show-avatar{
+    max-width: 200px;
+    margin-right: 10px;
+}
 
+.row{
+    margin-top: 10px;
+}
 
+#editar{
+    margin: 10px;
+}
 
+#main-container{
+    left: auto;
+    right: auto;
+    padding-left: 35px;
+    padding-right: 35px;
+}

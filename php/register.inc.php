@@ -1,6 +1,6 @@
 <?php
 include_once 'db_connect.php';
-include_once 'psl-config.php';
+include_once 'configuration.php';
 
 $error_msg = "";
 
@@ -35,32 +35,33 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $stmt->store_result();
 
         if ($stmt->num_rows == 1) {
-            // A user with this username already exists
-            $error_msg .= '<p class="error">A user with this username already exists</p>';
-            $stmt->close();
-        }
-        $stmt->close();
-    } else {
-        $error_msg .= '<p class="error">Database error line 55</p>';
+        // A user with this username already exists
+        $error_msg .= '<p class="error">A user with this username already exists</p>';
         $stmt->close();
     }
+    $stmt->close();
+} else {
+    $error_msg .= '<p class="error">Database error line 55</p>';
+    $stmt->close();
+}
 
-    if (empty($error_msg)) {
-        // Create a random salt
-        //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
-        $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+if (empty($error_msg)) {
+    // Create a random salt
+    //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
+    $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 
-        // Create salted password
-        $password = hash('sha512', $password . $random_salt);
+    // Create salted password
+    $password = hash('sha512', $password . $random_salt);
 
-        // Insert the new user into the database
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO Ofertante (idUsuario, email, password, salt) VALUES (?, ?, ?, ?)")) {
-            $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
-            // Execute the prepared query.
-            if (! $insert_stmt->execute()) {
-                header('Location: ../error.php?err=Registration failure: INSERT');
-            }
+    // Insert the new user into the database
+    var_dump('asdasdasdasd');
+    if ($insert_stmt = $mysqli->prepare("INSERT INTO Ofertante (idUsuario, email, password, salt) VALUES (?, ?, ?, ?)")) {
+        $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
+        // Execute the prepared query.
+        if (! $insert_stmt->execute()) {
+            header('Location: ../error.php?err=Registration failure: INSERT');
         }
+    }
         header('Location: ./register_success.php');
     }
 }
