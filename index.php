@@ -124,17 +124,15 @@ if (isset($_GET['error'])) {
 </div>
 
 <!-- <div id="lema">¡Tus clases al mejor precio y cerca de tu casa!</div> -->
-<footer class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <p class="text-center text-inverse">© muveo.sytes.net 2015</p>
-            </div>
-            <div class="col-sm-3"></div>
+<div class="container" style="position: absolute; bottom: 0; text-align: center; width: 100%; color: white;">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <p class="text-center text-inverse">© muveo.sytes.net 2015</p>
         </div>
+        <div class="col-sm-3"></div>
     </div>
-</footer>
+</div>
 
 <!-- Modal para login -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
