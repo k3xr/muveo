@@ -1,6 +1,6 @@
 <?php
 include_once 'db_connect.php';
-include_once 'configuration.php';
+include_once 'functions.php';
 
 $error_msg = "";
 
@@ -9,6 +9,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Not a valid email
         $error_msg .= '<p class="error">The email address you entered is not valid</p>';
@@ -35,33 +36,51 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
         $stmt->store_result();
 
         if ($stmt->num_rows == 1) {
-        // A user with this username already exists
-        $error_msg .= '<p class="error">A user with this username already exists</p>';
+            // A user with this username already exists
+            $error_msg .= '<p class="error">A user with this username already exists</p>';
+            $stmt->close();
+        }
         $stmt->close();
     }
-    $stmt->close();
-} else {
-    $error_msg .= '<p class="error">Database error line 55</p>';
-    $stmt->close();
-}
+    else {
+        $error_msg .= '<p class="error">Database error line 55</p>';
+        $stmt->close();
+    };
 
-if (empty($error_msg)) {
-    // Create a random salt
-    //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
-    $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+    if ($error_msg == "") {
 
-    // Create salted password
-    $password = hash('sha512', $password . $random_salt);
+        // Create a random salt
+        //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
+        $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 
-    // Insert the new user into the database
-    var_dump('asdasdasdasd');
-    if ($insert_stmt = $mysqli->prepare("INSERT INTO Ofertante (idUsuario, email, password, salt) VALUES (?, ?, ?, ?)")) {
-        $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
-        // Execute the prepared query.
-        if (! $insert_stmt->execute()) {
-            header('Location: ../error.php?err=Registration failure: INSERT');
+        // Create salted password
+        $password = hash('sha512', $password . $random_salt);
+
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO Usuario (nb_usuario, tipo_usuario) VALUES (?,1)")) {
+            $insert_stmt->bind_param('s', $username);
+
+            // Execute the prepared query.
+            if (! $insert_stmt->execute()) {
+                header('Location: ../error.php?err=Registration failure: INSERT');
+            }
         }
-    }
+
+        $idUsuario = null;
+        if ($result = $mysqli->query("SELECT idUsuario FROM Usuario WHERE nb_usuario='$username'")) {
+            $row = mysqli_fetch_assoc($result);
+            $idUsuario =$row['idUsuario'];
+            $result->close();
+        }
+
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO Contratante (idUsuario, nombre, password, email, salt)
+                                            VALUES ($idUsuario, ?, ?, ?, ?)")) {
+            $insert_stmt->bind_param('ssss', $username, $password, $email, $random_salt);
+
+            // Execute the prepared query.
+            if (! $insert_stmt->execute()) {
+                header('Location: ../error.php?err=Registration failure: INSERT');
+            }
+        }
         header('Location: ./register_success.php');
     }
 }
