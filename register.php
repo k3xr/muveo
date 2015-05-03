@@ -90,7 +90,6 @@ if (!empty($error_msg)) {
 
                     <div class="row">
                         <div class="form-group">
-
                             <label for="Nombre" class="col-sm-2 control-label">Nombre</label>
                             <div class="col-sm-4">
                                 <input type='text' name='username' id='username' class="form-control" />
@@ -102,7 +101,7 @@ if (!empty($error_msg)) {
                         <div class="form-group">
                             <label for="Apellidos" class="col-sm-2 control-label">Apellidos</label>
                             <div class="col-sm-6">
-                                <input id="Apellidos" class="col-sm-6 form-control">
+                                <input type='text' name='apellidos' id="apellidos" class="col-sm-6 form-control">
                             </div>
                         </div>
                     </div>
@@ -137,7 +136,7 @@ if (!empty($error_msg)) {
                         <div class="form-group">
                             <label for="tlf" class="col-sm-2 control-label">Teléfono</label>
                             <div class="col-sm-3">
-                                <input type="tel" id="tlf" class="form-control">
+                                <input type="tel" name="tlf" id="tlf" class="form-control">
                             </div>
                         </div>
                     </div>
