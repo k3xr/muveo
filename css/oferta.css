@@ -82,14 +82,12 @@ overflow-y:scroll;
 }
 
 #map{
-	display:inline-block; 
+	display:inline-block;
 	background-color: grey;
 	left: auto;
 	right: auto;
-	width: 300px;
-	height: 300px; 
-	max-width: 300px; 
-	max-height: 300px;
+	width: 500px;
+	height: 300px;
 	text-align: center;
 	vertical-align: central;
 }
