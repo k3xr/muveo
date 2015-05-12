@@ -30,14 +30,14 @@
 
 #container-default{
     border-radius: 5px;
-    color: #31708F;
+    color: #070707;
     margin: 0 auto;
     overflow: hidden;
     width: 65%;
     padding-top: 40px;
     margin-bottom: 20px;
 
-    background-color: transparent;
+    background-color: #ffffff;
 }
 
 body {
@@ -45,7 +45,7 @@ body {
     padding: 0px;
     height: 100%;
 
-    background-color: #ffffff;
+    background-color: #888;
 }
 
 #container {
@@ -90,7 +90,7 @@ footer{
 }
 
 #info-pral{
-    border: 1px solid #029DD6;
+    border: 1px solid #000000;
     border-radius: 5px;
 
     padding-top: 10px;
@@ -98,11 +98,11 @@ footer{
     margin-right: 20px;
     margin-bottom: 20px;
 
-    background-color: #D9EDF7;
+    background-color: #ffffff;
 }
 
 #ofertas{
-    border: 1px solid #029DD6;
+    border: 1px solid black;
     border-radius: 5px;
     float: right;
 
@@ -111,11 +111,11 @@ footer{
     margin-right: 30px;
     margin-bottom: 20px;
 
-    background-color: #D9EDF7;
+    background-color: #ffffff;
 }
 
 #conocimientos{
-    border: 1px solid #029DD6;
+    border: 1px solid #000000;
     border-radius: 5px;
     float: left;
 
@@ -124,15 +124,11 @@ footer{
     margin-right: 10px;
     margin-bottom: 20px;
 
-    background-color: #D9EDF7;
-}
-
-#conocimientos > h4{
-    color: #31708F;
+    background-color: #ffffff;
 }
 
 hr{
-    border-color: #029DD6;
+    border-color: black;
     padding: 0px;
     margin: 0px;
     margin-bottom: 5px;
@@ -146,4 +142,12 @@ hr{
 li{
     padding-bottom: 5px;
     max-width: 300px;
+}
+
+#boton-sesion{
+    float: right;
+}
+
+a{
+    color: #000000;
 }

@@ -1,5 +1,6 @@
 <?php
 include_once 'configuration.php';
+include_once 'db_connect.php';
 
 function sec_session_start() {
     $session_name = 'muveoSession';   // Set a custom session name
@@ -24,11 +25,11 @@ function sec_session_start() {
     session_regenerate_id(true);    // regenerated the session, delete the old one.
 }
 
-function login($email, $password, $mysqli) {
+function login($username, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible.
     if ($stmt = $mysqli->prepare("SELECT idContratante, nombre, password, salt
                 FROM Contratante WHERE nombre = ? LIMIT 1")) {
-        $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
+        $stmt->bind_param('s', $username);  // Bind "$username" to parameter.
         $stmt->execute();    // Execute the prepared query.
         $stmt->store_result();
 

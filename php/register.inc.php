@@ -5,10 +5,11 @@ include_once 'functions.php';
 $error_msg = "";
 
 if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['apellidos'], $_POST['tlf'] )) {
-
+/*
     var_dump($_POST['pais']);
     var_dump('asd');
     die();
+*/
 
 
     // Sanitize and validate the data passed in

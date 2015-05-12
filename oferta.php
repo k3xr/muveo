@@ -1,56 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <?php include 'head.php'; ?>
     <link href="css/oferta.css" rel="stylesheet">
     <title>Muveo - Oferta</title>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <!-- Header -->
-<nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- Boton login para dispositivos moviles-->
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Brand -->
-            <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
-        </div>
-        <!-- Login Form with button -->
-        <div id="navbar-main" class="collapse navbar-collapse" >
-            <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
-                <div class="form-group">
-                    <!-- Username -->
-                    <input class="form-control" name="username" placeholder="Usuario" type="text">
-                </div>
-                <div class="form-group">
-                    <!-- Password -->
-                    <input class="form-control" name="password" placeholder="Contraseña" type="password">
-                </div>
-                <!-- Submit -->
-                <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password)">Iniciar sesión</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<?php include 'header.php'; ?>
 <!-- Header End-->
 
 <div id="main-container">

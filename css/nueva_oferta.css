@@ -1,3 +1,58 @@
 .navbar-brand{
     padding: 0px;
 }
+#descripcion {
+
+}
+body{
+    margin-top: 30px;
+    background-color: cornflowerblue;
+}
+section{
+    left: auto;
+    right: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    font-size: smaller;
+    /*border: 1px solid ;*/
+    /*border-color: #BCE8F1;*/
+    /*color: #31708F;*/
+    /*background-color:#D9EDF7;*/
+}
+footer{
+    text-align: center;
+}
+.form-control{
+    font-size: 12px !important;
+}
+section div.form-group{
+    margin-bottom: 10px !important;
+}
+section *.form-control{
+    border-radius: 4px;
+}
+input.form-control, select.form-control{
+    height: 28px !important;
+}
+.input-group-addon{
+    background-color: white;
+    border: 0px solid;
+    margin-left: 3px;
+}
+.btn{
+    margin-top: 2px;
+    font-size: 12px !important;
+}
+
+#main-container {
+    background-color: white;
+    width: 75%;
+}
+
+#temas {
+    width: 230px;
+}
+

@@ -3,7 +3,7 @@ body {
     padding: 0px;
     height: 100%;
 
-    background-color: #ffffff;
+    background-color: #888;
 }
 
 #container {
@@ -17,8 +17,10 @@ body {
 }
 
 #body {
+    margin-top: 60px;
     padding:10px;
     padding-bottom:60px;   /* Height of the footer */
+
 }
 
 #footer {
@@ -51,7 +53,7 @@ footer{
 }
 
 #editar{
-    margin: 10px;
+    margin-left: 70%;
 }
 
 #main-container{
@@ -59,4 +61,12 @@ footer{
     right: auto;
     padding-left: 35px;
     padding-right: 35px;
+    border-radius: 5px;
+    color: #070707;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 65%;
+    margin-bottom: 20px;
+
+    background-color: #ffffff;
 }

@@ -2,25 +2,11 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="ofertas de clases">
-    <meta charset="keywords" content="clases">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!--Estilos-->
-    <link rel="stylesheet" href="css/estilos.css">
+    <?php include 'head.php'; ?>
     <link href="css/editar_perfil.css" rel="stylesheet">
     <link href="css/formulario.css" rel="stylesheet">
     <title>Muveo</title>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements
-    and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file://
-    -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <script type="text/JavaScript" src="js/sha512.js"></script>
     <script type="text/JavaScript" src="js/forms.js"></script>
     <![endif]-->
@@ -31,44 +17,7 @@
 <div id="container">
     <div id="header">
         <!-- Header -->
-        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></img> </a>
-
-                </div>
-
-                <div class="navbar-collapse collapse" id="navbar-main">
-                    <!--
-                    <div>
-                        <?php
-                    if (login_check($mysqli) == true) {
-                        echo "<p>Currently logged " . $logged . " as " . htmlentities($_SESSION['username']) . ". <a href='includes/logout.php'>Log out</a></p>";
-                        } else {
-                        //echo "<p>Currently logged " . $logged . ". <a href='register.php'>register</a></p>";
-                        }
-                        ?>
-                    </div>
-                    -->
-
-                    <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
-                        <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Usuario">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="password" class="form-control" placeholder="Contraseña">
-                        </div>
-                        <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
+        <?php include 'header.php'; ?>
         <!-- Header End-->
 
     </div>
@@ -421,20 +370,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="form-group">
-                <label for="Ciudad" class="col-sm-2 control-label">Ciudad</label>
-                <div class="col-sm-4">
-                    <input id="Ciudad" class="form-control">
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <button id="editar" class="btn btn-primary pull-right">Editar</button>
+                    
+        <button id="editar" class="btn btn-primary">Editar</button>
 
 
         </form>

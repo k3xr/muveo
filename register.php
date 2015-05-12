@@ -7,20 +7,11 @@ include_once 'php/functions.php';
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="ofertas de clases">
-    <meta charset="keywords" content="clases">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!--Estilos-->
-    <link rel="stylesheet" href="css/estilos.css">
+    <?php include 'head.php'; ?>
     <link href="css/formulario.css" rel="stylesheet">
     <link href="css/registro.css" rel="stylesheet">
-    <title>Muveo</title>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <title>Muveo - Registro</title>
+
     <script type="text/JavaScript" src="js/sha512.js"></script>
     <script type="text/JavaScript" src="js/forms.js"></script>
 </head>
@@ -39,11 +30,6 @@ if (!empty($error_msg)) {
         <div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">
             <div class="container">
                 <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
 
                 </div>
@@ -77,13 +63,11 @@ if (!empty($error_msg)) {
                     <div class="row">
                         <div class="form-group">
                             <label for="tipo" class="col-sm-2 control-label">Tipo de usuario:</label>
-                            <div class="col-sm-6">
-                                <input id="tipo" class="radio">
-                                    <label for="tipo-Ofer" class="col-sm-2 control-label">Ofertante</label>
-                                    <input class="col-sm-1" type="radio" id="tipo-Ofer" value="Ofertante">
-                                    <label for="tipo-Cont" class="col-sm-2 control-label">Contratante</label>
-                                    <input class="col-sm-1" type="radio" id="tipo-Cont" value="Contratante">
-                                </input>
+                            <div id=tipo" class="col-sm-6">
+                                <label for="tipo-Cont" class="col-sm-2 control-label">Contratante</label>
+                                <input class="col-sm-1" type="radio" name="tipo" id="tipo-Cont" value="Contratante" checked>
+                                <label for="tipo-Ofer" class="col-sm-2 control-label">Ofertante</label>
+                                <input class="col-sm-1" type="radio" name="tipo" id="tipo-Ofer" value="Ofertante">
                             </div>
                         </div>
                     </div>
@@ -402,22 +386,16 @@ if (!empty($error_msg)) {
                     </div>
 
                     <div class="row">
-                        <div class="form-group">
-                            <label for="Ciudad" class="col-sm-2 control-label">Ciudad</label>
-                            <div class="col-sm-4">
-                                <input id="Ciudad" class="form-control">
-                            </div>
-                        </div>
+                            <input type="button"
+                                   id="boton-registro"
+                                   value="Regístrate"
+                                   class="btn btn-primary"
+                                   onclick="return regformhash(this.form,
+                                                   this.form.username,
+                                                   this.form.email,
+                                                   this.form.password,
+                                                   this.form.confirmpwd);" />
                     </div>
-
-                    <input type="button"
-                           value="Regístrate"
-                           class="btn btn-primary pull-right"
-                           onclick="return regformhash(this.form,
-                                           this.form.username,
-                                           this.form.email,
-                                           this.form.password,
-                                           this.form.confirmpwd);" />
 
                 </form>
             </section>

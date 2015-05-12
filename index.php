@@ -13,68 +13,14 @@ if (login_check($mysqli) == true) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="ofertas de clases"/>
-    <meta charset="keywords" content="clases"/>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!--Estilos-->
-    <link rel="stylesheet" href="css/estilos.css">
-
+    <?php include 'head.php'; ?>
     <title>Muveo</title>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
-<?php
-if (isset($_GET['error'])) {
-    echo '<p class="error">Error Logging In!</p>';
-}
-?>
-
-<div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
-
-        </div>
-
-        <div class="navbar-collapse collapse" id="navbar-main">
-
-            <title>Secure Login: Log In</title>
-            <script type="text/JavaScript" src="js/sha512.js"></script>
-            <script type="text/JavaScript" src="js/forms.js"></script>
-            <?php
-            if (isset($_GET['error'])) {
-                echo '<p class="error">Error Logging In!</p>';
-            }
-            ?>
-
-            <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
-                <div class="form-group">
-                    <input type="text" name="email" class="form-control" placeholder="Usuario">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Contraseña">
-                </div>
-                <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
-            </form>
-        </div>
-    </div>
-</div>
+<!-- Header -->
+<?php include 'header.php'; ?>
+<!-- Header End-->
 
 <div class="container-fluid" id="container-full">
     <div class="row">
@@ -97,7 +43,7 @@ if (isset($_GET['error'])) {
                                 <div class="input-group col-md-12">
                                     <input type="text" class="form-control input-lg" placeholder="Buscar" />
                                             <span class="input-group-btn">
-                                                <form method="post" action="busqueda.html">
+                                                <form method="post" action="busqueda.php">
                                                     <button class="btn btn-info btn-lg" type="submit">
                                                         <i class="glyphicon glyphicon-search"></i>
                                                     </button>
