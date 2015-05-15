@@ -42,11 +42,11 @@ if (!login_check($mysqli)) {
     echo '<div class="container">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-<span class="icon-bar"></span>
+            <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><img src="images/logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-main">
@@ -57,7 +57,7 @@ if (!login_check($mysqli)) {
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                     <li><a href="php/process_logout.php">Log out</a></li>
                 </ul>
             </li>

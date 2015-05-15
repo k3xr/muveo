@@ -91,26 +91,28 @@ if (login_check($mysqli) == true) {
                 <h3>Inicia sesión para continuar</h3>
                 <h5>¿No tienes cuenta? ¡Registrate <a href="register.php"> aquí</a> en menos de un minuto!</h5>
             </div>
+
             <div class="modal-body">
                 <form action="php/process_login.php" class="form-horizontal" method="post" name="login_form">
                     <div class="form-group">
                         <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
                         <div class="col-xs-6">
-                            <input type="text" name="email" class="form-control" id="inputUsername" placeholder="Usuario">
+                            <input type="text" name="username" class="form-control" placeholder="Usuario">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-xs-4 control-label"> Contraseña </label>
                         <div class="col-xs-6">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
+                            <input type="password" name="password" class="form-control" placeholder="Contraseña">
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">
+                        Iniciar sesión
+                    </button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">
-                    Iniciar sesión
-                </button>
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                     Cerrar
                 </button>
