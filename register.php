@@ -72,11 +72,21 @@ if (!empty($error_msg)) {
                         </div>
                     </div>
 
+
                     <div class="row">
                         <div class="form-group">
-                            <label for="Nombre" class="col-sm-2 control-label">Nombre</label>
+                            <label for="Nombre" class="col-sm-2 control-label">Nombre de usuario</label>
                             <div class="col-sm-4">
                                 <input type='text' name='username' id='username' class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Nombre</label>
+                            <div class="col-sm-4">
+                                <input type='text' name='nombre' id='nombre' class="form-control" />
                             </div>
                         </div>
                     </div>
@@ -130,7 +140,7 @@ if (!empty($error_msg)) {
                         <div class="form-group">
                             <label for="pais" class="col-sm-2 control-label">País</label>
                             <div class="col-sm-4">
-                                <select id="pais" class="form-control">
+                                <select id="pais" name="pais" class="form-control">
                                     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
                                     <option value="Åland Islands" title="Åland Islands">Åland Islands</option>
                                     <option value="Albania" title="Albania">Albania</option>

@@ -56,3 +56,7 @@ input.form-control, select.form-control{
     width: 230px;
 }
 
+.deleteTag{
+    float: right;
+}
+

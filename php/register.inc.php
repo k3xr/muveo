@@ -4,20 +4,24 @@ include_once 'functions.php';
 
 $error_msg = "";
 
-if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['apellidos'], $_POST['tlf'] )) {
-/*
-    var_dump($_POST['pais']);
-    var_dump('asd');
-    die();
-*/
-
+if (isset($_POST['username'], $_POST['nombre'],$_POST['apellidos'], $_POST['p'], $_POST['email'], $_POST['tlf'] )) {
 
     // Sanitize and validate the data passed in
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
+    $nacionalidad = filter_input(INPUT_POST, 'pais', FILTER_SANITIZE_STRING);
     $apellidos = filter_input(INPUT_POST, 'apellidos', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     $tlf = $_POST['tlf'];
+
+    $tipoUsuario = null;
+    if ($_POST['tipo'] == 'Contratante') {
+        $tipoUsuario = 0;
+    }
+    if ($_POST['tipo'] == 'Ofertante') {
+        $tipoUsuario = 1;
+    }
 
     if (!filter_var($tlf, FILTER_VALIDATE_INT)) {
         // Not a valid tlf
@@ -41,7 +45,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['apellidos'],
     // breaking these rules.
 
     // check existing username
-    $prep_stmt = "SELECT idUsuario FROM Usuario WHERE idUsuario = ? LIMIT 1";
+    $prep_stmt = "SELECT idUsuario FROM Usuario WHERE nbUsuario = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
 
     if ($stmt) {
@@ -69,25 +73,8 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['apellidos'],
         // Create salted password
         $password = hash('sha512', $password . $random_salt);
 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO Usuario (nb_usuario, tipo_usuario) VALUES (?,1)")) {
-            $insert_stmt->bind_param('s', $username);
-
-            // Execute the prepared query.
-            if (! $insert_stmt->execute()) {
-                header('Location: ../error.php?err=Registration failure: INSERT');
-            }
-        }
-
-        $idUsuario = null;
-        if ($result = $mysqli->query("SELECT idUsuario FROM Usuario WHERE nb_usuario='$username'")) {
-            $row = mysqli_fetch_assoc($result);
-            $idUsuario =$row['idUsuario'];
-            $result->close();
-        }
-
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO Contratante (idUsuario, nombre, apellidos, password, email, telefono, salt)
-                                            VALUES ($idUsuario, ?, ?, ?, ?, ?, ?)")) {
-            $insert_stmt->bind_param('ssssss', $username, $apellidos, $password, $email, $tlf, $random_salt);
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO Usuario (nbUsuario, tipoUsuario, nombre, apellidos, nacionalidad, password, email, telefono, salt) VALUES (?,?,?,?,?,?,?,?,?)")) {
+            $insert_stmt->bind_param('sssssssss', $username, $tipoUsuario, $nombre, $apellidos, $nacionalidad, $password, $email, $tlf, $random_salt);
 
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {

@@ -9,8 +9,10 @@ if (login_check($mysqli) == true) {
 } else {
     $logged = 'out';
 }
-
-foreach($mysqli->query("SELECT * FROM Usuario WHERE nbUsuario=".$_SESSION['username'])as $user);
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+}
+foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=".$id)as $user);
 
 ?>
 <!DOCTYPE html>
@@ -31,58 +33,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE nbUsuario=".$_SESSION['usern
 <div id="container">
     <div id="header">
         <!-- Header -->
-
-        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
-
-                </div>
-
-                <div class="navbar-collapse collapse" id="navbar-main">
-
-                    <div>
-                        <?php
-                        if (login_check($mysqli) == true) {
-                            echo "<p>Currently logged " . $logged . " as " . htmlentities($_SESSION['username']) . ". <a href='includes/logout.php'>Log out</a></p>";
-                            printf("
-                                <ul class=\"nav navbar-nav\" id=\"boton-sesion\">
-                                    <li class=\"dropdown\">
-                                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                            %s
-                                            <b class=\"caret\"></b>
-                                        </a>
-                                        <ul class=\"dropdown-menu\">
-                                            <li><a href=\"#\">Perfil</a></li>
-                                            <li><a href=\"#\">Log Out</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            ",$user['nbUsuario']);
-                        } else {
-                            //echo "<p>Currently logged " . $logged . ". <a href='register.php'>register</a></p>";
-                            printf("
-                                <form class=\"navbar-form navbar-right\" role=\"search\" action=\"php/process_login.php\" method=\"post\" name=\"login_form\">
-                                    <div class=\"form-group\">
-                                        <input type=\"text\" name=\"email\" class=\"form-control\" placeholder=\"Usuario\">
-                                    </div>
-                                    <div class=\"form-group\">
-                                        <input type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Contraseña\">
-                                    </div>
-                                    <button type=\"submit\" class=\"btn btn-primary\" value=\"Login\" onclick=\"formhash(this.form, this.form.password);\">Iniciar sesión</button>
-                                </form>
-                            ");
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php include 'header.php'; ?>
     </div>
     <!-- Header End-->
 
@@ -90,8 +41,16 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE nbUsuario=".$_SESSION['usern
     <div class="container" id="container-default">
         <div class="row" id="info-pral">
             <div class="col-md-4">
-                <img id="avatar" src="http://www.jornalq.com/images/Artigos2014D/chooeffd.jpg" class="img-responsive img-rounded">
-                <span class="valoracion val-50"></span>
+                <?php
+                printf("
+                <img id=\"avatar\" src=\"%s\" class=\"img-responsive img-rounded\">
+                ", $user['avatarPath']);
+
+                printf("
+                 <span class=\"valoracion val-%d\"></span>
+                ", $user['valoracion']);
+                ?>
+
             </div>
             <div class="col-md-8">
                 <h2>
@@ -99,9 +58,15 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE nbUsuario=".$_SESSION['usern
                     printf("%s %s",$user['nombre'],$user['apellidos']);
                     ?>
                 </h2>
-                <a href="editar_perfil.php">
-                    <button class="btn btn-default glyphicon glyphicon-cog"></button>
-                </a>
+                    <?php
+                    if($user['nbUsuario']==$_SESSION['username']){
+                        printf("
+                        <a href=\"editar_perfil.php\">
+                            <button class=\"btn btn-default glyphicon glyphicon-cog\"></button>
+                        </a>
+                        ");
+                    }
+                    ?>
                 <h4>
                     <?php
                     printf("%s",$user['nacionalidad'])
@@ -118,41 +83,40 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE nbUsuario=".$_SESSION['usern
         <div class="row">
 
             <div class="col-md-5" id="conocimientos">
-                <button class="btn btn-default glyphicon glyphicon-plus-sign btn-add"></button>
-                <h2>Conocimientos</h2>
+                <h2>Formación</h2>
                 <hr/>
-                <h4>
-                    <?php $user['formacion'] ?>
-                </h4>
+                <p>
+                    <?php
+                    printf("%s",$user['formacion']);
+                    ?>
+                </p>
             </div>
 
             <div class="col-md-5" id="ofertas">
-                <a href="nueva_oferta.php">
-                    <button class="btn btn-default glyphicon glyphicon-plus-sign btn-add"></button>
-                </a>
+                <?php
+                if($user['nbUsuario']==$_SESSION['username']){
+                    printf("
+                    <a href=\"nueva_oferta.php\">
+                        <button class=\"btn btn-default glyphicon glyphicon-plus-sign btn-add\"></button>
+                    </a>
+                    ");
+                }
+                ?>
+
                 <h1>Ofertas</h1>
                 <hr/>
                 <ul class="list-group" >
-                    <a href="oferta.php">
-                        <li class="list-group-item">
-                            Clase de Artes Marciales
+                    <?php
+                    foreach($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=".$user['idUsuario'])as $oferta){
+                        printf("
+                    <a href=\"oferta.php\">
+                        <li class=\"list-group-item\">
+                        %s
                         </li>
                     </a>
-                    <a href="#">
-                        <li class="list-group-item">
-                            Charla en conferencias
-                        </li>
-                    </a>
-                    <a href="#">
-                        <li class="list-group-item">
-                            Actuación en películas
-                        </li>
-                    </a>
-                    <a href="#">
-                        <li class="list-group-item">
-                            Actuación en anuncios
-                        </li>
-                    </a>
+                    ",$oferta['titulo']);
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
