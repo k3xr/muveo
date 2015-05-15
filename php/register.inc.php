@@ -69,7 +69,6 @@ if (isset($_POST['username'], $_POST['nombre'],$_POST['apellidos'], $_POST['p'],
 
         // Create a random salt
         $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
-
         // Create salted password
         $password = hash('sha512', $password . $random_salt);
 

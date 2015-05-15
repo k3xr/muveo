@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Marco
- * Date: 09/05/2015
- * Time: 17:49
- */
+
 echo '<div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">';
 
 ?>
@@ -14,17 +9,14 @@ if (isset($_GET['error'])) {
     echo '<div class="alert alert-danger text-center v-center" role="alert">Nombre de usuario o
         password incorrectos</div>';
 }
-?>
-
-<?php
 
 include_once 'php/functions.php';
 
-if(!login_check($mysqli)) {
+if (!login_check($mysqli)) {
     echo '<div class="container">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-<span class="icon-bar"></span>
+            <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
@@ -32,6 +24,8 @@ if(!login_check($mysqli)) {
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-main">
+        <script type="text/JavaScript" src="js/sha512.js"></script>
+        <script type="text/JavaScript" src="js/forms.js"></script>
         <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
             <div class="form-group">
                 <input type="text" name="username" class="form-control" placeholder="Usuario">
@@ -39,12 +33,12 @@ if(!login_check($mysqli)) {
             <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Contraseña">
             </div>
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
         </form>
     </div>
 </div>
 </div>';
-}else{
+} else {
     echo '<div class="container">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
@@ -59,7 +53,7 @@ if(!login_check($mysqli)) {
         <ul class="nav navbar-nav pull-right"  id="boton-sesion">
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                '.$_SESSION['username'].'
+                ' . $_SESSION['username'] . '
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
