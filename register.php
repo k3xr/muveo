@@ -23,122 +23,59 @@ if (!empty($error_msg)) {
     echo $error_msg;
 }
 ?>
-
-<div id="container">
-    <div id="header">
-        <!-- Header -->
-        <div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
-
-                </div>
-
-                <div class="navbar-collapse collapse" id="navbar-main">
-
-                    <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
-                        <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Usuario">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="password" class="form-control" placeholder="Contraseña">
-                        </div>
-                        <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
+<!-- Header -->
+<?php include 'header.php'; ?>
+<!-- Header End-->
         <!-- Header End-->
-
-    </div>
-    <div id="body">
-
-        <div class="container" id="main-container">
-
-            <section class="col-lg-offset-1 col-lg-11">
-
-                <form class="form-horizontal" role="form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post" name="registration_form">
-
-                    <div class="row">
+        <div id="main-container" class="container">
+            <div class="row">
+                <section>
+                    <h2><strong>Registrar una cuenta</strong></h2>
+                    <hr>
+                    <form class="form-horizontal" role="form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post" name="registration_form">
+                        <h4>1. Datos de usuario</h4>
                         <div class="form-group">
-                            <label for="tipo" class="col-sm-2 control-label">Tipo de usuario:</label>
-                            <div id=tipo" class="col-sm-6">
-                                <label for="tipo-Cont" class="col-sm-2 control-label">Contratante</label>
-                                <input class="col-sm-1" type="radio" name="tipo" id="tipo-Cont" value="Contratante" checked>
-                                <label for="tipo-Ofer" class="col-sm-2 control-label">Ofertante</label>
-                                <input class="col-sm-1" type="radio" name="tipo" id="tipo-Ofer" value="Ofertante">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="Nombre" class="col-sm-2 control-label">Nombre de usuario</label>
+                            <label for="Nombre" class="col-sm-4 control-label">Nombre de usuario</label>
                             <div class="col-sm-4">
                                 <input type='text' name='username' id='username' class="form-control" />
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">Nombre</label>
+                            <label for="tipo" class="col-sm-4 control-label">Tipo de usuario</label>
+                            <div id="tipo" class="col-sm-6">
+                                <input type="radio" name="tipo" id="tipo-Cont" value="Contratante" checked> Contratante
+                                <br>
+                                <input type="radio" name="tipo" id="tipo-Ofer" value="Ofertante"> Ofertante
+                            </div>
+                        </div>
+                        <hr>
+                        <h4>2. Datos personales</h4>
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 control-label">Nombre</label>
                             <div class="col-sm-4">
                                 <input type='text' name='nombre' id='nombre' class="form-control" />
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="form-group">
-                            <label for="Apellidos" class="col-sm-2 control-label">Apellidos</label>
-                            <div class="col-sm-6">
+                            <label for="Apellidos" class="col-sm-4 control-label">Apellidos</label>
+                            <div class="col-sm-4">
                                 <input type='text' name='apellidos' id="apellidos" class="col-sm-6 form-control">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="form-group">
-                            <label for="Pass" class="col-sm-2 control-label">Contraseña</label>
+                            <label for="email" class="col-sm-4 control-label">E-mail</label>
                             <div class="col-sm-4">
-                                <input type="password" name="password" id="password" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="Conf-Pass" class="col-sm-2 control-label">Confirmar contraseña</label>
-                            <div class="col-sm-4">
-                                <input type="password" name="confirmpwd" id="confirmpwd" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label">E-mail</label>
-                            <div class="col-sm-6">
                                 <input type="email" name="email" id="email" class="col-sm-6 form-control"/>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="form-group">
-                            <label for="tlf" class="col-sm-2 control-label">Teléfono</label>
-                            <div class="col-sm-3">
+                            <label for="tlf" class="col-sm-4 control-label">Teléfono</label>
+                            <div class="col-sm-2">
                                 <input type="tel" name="tlf" id="tlf" class="form-control">
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Location -->
-                    <div class="row">
                         <div class="form-group">
-                            <label for="pais" class="col-sm-2 control-label">País</label>
+                            <label for="pais" class="col-sm-4 control-label">País</label>
                             <div class="col-sm-4">
                                 <select id="pais" name="pais" class="form-control">
                                     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
@@ -393,31 +330,40 @@ if (!empty($error_msg)) {
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                            <input type="button"
-                                   id="boton-registro"
-                                   value="Regístrate"
-                                   class="btn btn-primary"
-                                   onclick="return regformhash(this.form,
+                        <div class="form-group">
+                            <label for="Pass" class="col-sm-4 control-label">Contraseña</label>
+                            <div class="col-sm-4">
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Conf-Pass" class="col-sm-4 control-label">Repetir contraseña</label>
+                            <div class="col-sm-4">
+                                <input type="password" name="confirmpwd" id="confirmpwd" class="form-control">
+                            </div>
+                        </div>
+                        <hr>
+                        <input type="button"
+                               id="boton-registro"
+                               value="Crear cuenta"
+                               class="btn btn-primary"
+                               onclick="return regformhash(this.form,
                                                    this.form.username,
                                                    this.form.email,
                                                    this.form.password,
                                                    this.form.confirmpwd);" />
-                    </div>
-
-                </form>
-            </section>
+                    </form>
+                </section>
+            </div>
         </div>
-    </div>
+    
     <div id="footer">
         <!-- Footer -->
         <footer id="lema" class="">
             © muveo.sytes.net 2015
         </footer>
     </div>
-</div>
+
 
 
 

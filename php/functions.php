@@ -189,4 +189,35 @@ function esc_url($url) {
     }
 }
 
+function matching($word, $mysqli){
+
+    $resultArray = array();
+    $toSearch = "%".$word."%";
+
+    if ($stmt = $mysqli->prepare("SELECT idOferta FROM Oferta WHERE titulo like ?")) {
+        $stmt->bind_param('s', $toSearch);
+        $stmt->execute();
+        $stmt->store_result();
+
+        // get variables from result.
+        $stmt->bind_result($idOferta);
+
+        if ($stmt->num_rows < 1) {
+            return 'na';
+            return false;
+        }
+        else{
+            $iter = 0;
+            while($stmt->fetch()){
+                $resultArray[$iter] = $idOferta;
+                $iter++;
+            }
+            $stmt->free_result();
+            $stmt->close();
+            return $resultArray;
+        }
+    }
+    return false;
+}
+
 ?>

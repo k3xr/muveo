@@ -72,7 +72,7 @@ if (isset($_POST['username'], $_POST['nombre'],$_POST['apellidos'], $_POST['p'],
         // Create salted password
         $password = hash('sha512', $password . $random_salt);
 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO Usuario (nbUsuario, tipoUsuario, nombre, apellidos, nacionalidad, password, email, telefono, salt) VALUES (?,?,?,?,?,?,?,?,?)")) {
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO Usuario (nbUsuario, tipoUsuario, nombre, apellidos, nacionalidad, password, email, telefono, avatarPath, salt) VALUES (?,?,?,?,?,?,?,?,\"/images/avatar.jpg\",?)")) {
             $insert_stmt->bind_param('sssssssss', $username, $tipoUsuario, $nombre, $apellidos, $nacionalidad, $password, $email, $tlf, $random_salt);
 
             // Execute the prepared query.

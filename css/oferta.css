@@ -1,26 +1,9 @@
-button.btn-primary {
-    text-shadow: 0px 1px 0px #000;
-	/*background-color: #2B6FB6;*/
-	border: 0px;
-	padding: 8px;
-	font-weight: bold;
-    background-image: linear-gradient(to bottom, #337AB7 0px, #265A88 100%);
-    /*background-image: linear-gradient(to bottom, #2B6FB6 0px, #337ab7 100%);*/
-}
-
-button.btn-primary:hover {
-	background-color: #337ab7;
-	border: 0px;
-	padding: 8px;
-	font-weight: bold;
-}
-
 *[hidden]{
     display: none;
 }
 
 .estrella {
-    color: #ffd700;
+/*    color: #ffd700;*/
 }
 
 .navbar{
@@ -51,7 +34,7 @@ overflow-y:scroll;
 
 #avatar {
 	max-width: 225px;
-	max-height: 225px;
+	max-height: 225x;
 	border: 1px;
     border-color: #BCE8F1;
 	border-style: solid;
@@ -59,6 +42,14 @@ overflow-y:scroll;
 	margin-right: auto;
 	margin-bottom: 5px;
 	border-radius: 3px;
+}
+
+#im_perfil{
+    max-height: 64px;
+    max-width: 64px;
+    border-radius: 3px;
+    float: left;
+    margin: 10px;
 }
 
 #bio {
@@ -72,13 +63,10 @@ overflow-y:scroll;
 	margin-bottom: 10px;
 }
 
-#datos-oferta-section{
+#datos-oferta{
 	font-size: 13px;
 	background-color:#ffffff;
     display: block;
-}
-
-#datos-oferta {
 }
 
 #map{
@@ -92,10 +80,6 @@ overflow-y:scroll;
 	vertical-align: central;
 }
 
-#main-container {
-	
-}
-
 #overview {
     display: inline-block;
     border: 1px;
@@ -104,6 +88,20 @@ overflow-y:scroll;
     color: #31708F;
 	background-color:#D9EDF7;
 	min-height: 1000px;
+    font-size: 13px;
+    padding: 12px;
+	text-align: left;
+}
+
+#main-container {
+    background-color: white;
+    width: 85%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 100px #222;
 }
 
 #loginModal {
@@ -117,12 +115,11 @@ nav {
 body {
 	margin-top: 70px;
 	/*background-image: url('http://i.imgur.com/NowYKD7.jpg');*/
-    background-color: #888888;
+    background-image: url("/images/backgroundIndex.jpg");
 }
 
 aside {
 	border-radius: 5px;
-	float: left;
 	width: 280px;
 	padding: 20px;
 	margin: 20px;
@@ -148,15 +145,17 @@ section {
 
 /* Incluir en estilos.css */
 footer {
+     text-align: center;
+    margin-top: 20px;
     height:50px;
     bottom:0px;
     left:0px;
     right:0px;
-	padding: 10px;
+    padding: 10px;
     margin-bottom:0px;
-	color: black;
-	background-color: #ffffff;
-	text-align: center;
+    color: black;
+    background-color: #ffffff;
+    text-align: center;
     font-size: smaller;
 }
 
@@ -187,18 +186,18 @@ aside > hr {
     border-color: #BCE8F1;
 }
 
-a.tag {
+.tag {
 	font-weight: bold;
 	text-align: center;
 	padding: 3px;
-	box-shadow: 0 0 1px #888;
 	border-radius: 4px;
-	background-color: lightgrey;
-	color: grey;
+	background-color: cornflowerblue;
+	color: aliceblue;
 	margin: 2px;
+    font-size: 12px;;
 }
 
-a.tag:hover{
+.tag:hover{
     background-color: grey;
     color: white;
     text-decoration: none;

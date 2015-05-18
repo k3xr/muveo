@@ -20,7 +20,8 @@ if (!login_check($mysqli)) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
+        <link rel="shortcut icon" href="images/muveo_icon.svg">
+        <a class="navbar-brand" href="index.php"><img src="images/muveo_logo.svg"></a>
     </div>
 
     <div class="navbar-collapse collapse" id="navbar-main">
@@ -57,7 +58,7 @@ if (!login_check($mysqli)) {
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="perfil.php?nb=' . $_SESSION['username'] . '">Perfil</a></li>
                     <li><a href="php/process_logout.php">Log out</a></li>
                 </ul>
             </li>

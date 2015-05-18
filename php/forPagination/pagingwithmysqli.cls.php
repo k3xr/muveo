@@ -205,8 +205,10 @@ class PagingWithMySQLiX{
 			$f_qry_name = $p_arr["query_name"];
 			$f_return = '<ul class="pagination">';
 			if($p_arr["first_enabled"] == true) $f_return .= '<li><a href="'.$p_arr["first"]["link"].'">&laquo;</a></li>';
-			else $f_return .= '<li class="disabled"><a href="#" onClick="return false;">&laquo;</a></li>';
-			foreach($p_arr["page"] as $pg) $f_return .= '<li'.(empty($pg['link'])?' class="active"':'').'><a href="'.$pg['link'].'">'.$pg[$f_qry_name].'</a></li>';
+			else $f_return .= '<li class="disabled"><a href="'.$p_arr["first"]["link"].'" onClick="return false;">&laquo;</a></li>';
+
+            //
+            foreach($p_arr["page"] as $pg) $f_return .= '<li'.(empty($pg['link'])?' class="active"':'').'><a href="'.$pg['link'].'">'.$pg[$f_qry_name].'</a></li>';
 			if($p_arr["last_enabled"] == true) $f_return .= '<li><a href="'.$p_arr["last"]["link"].'">&raquo;</a></li>';
 			else $f_return .= '<li class="disabled"><a href="#" onClick="return false;">&raquo;</a></li>';
 			$f_return .= "</ul>";

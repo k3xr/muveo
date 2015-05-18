@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link href="css/oferta.css" rel="stylesheet">
+    <title>Muveo - Oferta</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- Header -->
+<nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- Boton login para dispositivos moviles-->
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Brand -->
+            <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
+        </div>
+        <!-- Login Form with button -->
+        <div id="navbar-main" class="collapse navbar-collapse" >
+            <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
+                <div class="form-group">
+                    <!-- Username -->
+                    <input class="form-control" name="username" placeholder="Usuario" type="text">
+                </div>
+                <div class="form-group">
+                    <!-- Password -->
+                    <input class="form-control" name="password" placeholder="Contraseña" type="password">
+                </div>
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password)">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<!-- Header End-->
+<div id="main-container" class="container">
+        <div class="row">
+           <!-- Overview de la oferta  -->
+            <aside id="overview" class="col-md-3">
+                <div id=anuncio>
+                <h4><strong> Clases de programación </strong></h4>
+                    <span>
+                        <img id="avatar" src="images/clasesProgramacion.jpg" class="img-responsive">
+                    </span>
+                </div>
+                <div id="author">
+                    <img id=im_perfil src="http://rumberanetwork.com/wp-content/uploads/2014/06/cara-delevingne-wallpaper-1848598319.jpg" class="img-responsive">
+                    <a href="muveo.sytes.net/perfil.php?id=PHPID"><h4><strong>Elena Nito del Bosque</strong></h4></a>
+                    <h5> <em> Soy programadora </em> </h5>
+                </div>
+                <hr>
+                <span id="rating">
+                    <h5 style="margin-bottom:5px"> <strong>Valoración:</strong></h5>
+                    <span class="glyphicon glyphicon-star estrella"></span>
+                    <span class="glyphicon glyphicon-star estrella"></span>
+                    <span class="glyphicon glyphicon-star-empty estrella"></span>
+                    <span class="glyphicon glyphicon-star-empty estrella"></span>
+                    <span class="glyphicon glyphicon-star-empty estrella"></span>
+                </span>
+
+                <h6><strong>Registrado desde:</strong></h6>
+                <span id="fecha_registro"> Abril 2015</span>
+                <h6><strong>País:</strong></h6>
+                <span id="nacionalidad"> España </span>
+                <address id="contacto-anunciante">
+                    <h6><strong>Contacto: </strong></h6>
+                    <a href="mailto:#"><strong>first.last@example.com</strong></a>
+                </address>
+                <hr>
+                <h4><strong>Formación/Descripción</strong></h4>
+                <p>
+                    function(){
+            asdjjsajfajjsd
+                    <br><br>
+                    Quick and Creative IT Fingers Providing Web Solutions In:-
+                    <br><br>
+                    PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
+                    <br><br>
+                    Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
+                    <br><br>
+                    We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
+                    <br><br>
+                    We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
+                </p>
+            </aside>
+            <!-- Overview de la oferta -->
+            <!-- Datos de la oferta -->
+            <div id="datos-oferta" class="col-8-md">
+                <button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                    <span class="glyphicon glyphicon-hand-right">
+                    </span>
+                    Contratar
+                </button>
+                <h4> Descripción de la oferta</h4>
+                <hr>
+                <p>
+                    PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
+                    <br><br>
+                    Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
+                    <br><br>
+                    We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
+                    <br><br>
+                    We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
+                </p>
+                <h4> Especificaciones de la oferta</h4>
+                <hr>
+                <ul class="list-unstyled">
+                    <li> <strong>Fecha de publicación: </strong><span>6 de abril de 2015</span> </li>
+                    <li> <strong>Categoría: </strong><span>Clases particulares</span> </li>
+                    <li> <strong>Precio: </strong><span>12,50 €/hora</span></li>
+                    <li> <strong>Idioma: </strong><span>Español</span></li>
+                    <li> <strong>Provincia: </strong><span> Madrid</span></li>
+                    <li> <strong>Localizacion: </strong><span>UPM Campus de Montegancedo</span></li>
+                </ul>
+                <div id="location-map">
+                    <h4> Mapa </h4>
+                    <hr>
+                    <div id="map"></div>
+                </div>
+                <div id="tag-list">
+                    <h4>
+                        Temas relacionados
+                    </h4>
+                    <hr>
+                    <span class="tag"> HTML </span>
+                    <span class="tag"> CSS </span>
+                    <span class="tag"> JavaScript </span>
+                </div>
+            </div>
+            <!-- Datos de la oferta -->
+
+
+
+        </div>
+</div>
+
+<!-- Modal para login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h3>Inicia sesión para continuar</h3>
+                <h5>¿No tienes cuenta? ¡Registrate <a href="register.php"> aquí</a> en menos de un minuto!</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
+                        <div class="col-xs-6">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    Iniciar sesión
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal para login -->
+
+<!-- Footer -->
+<footer id="lema" class="">
+    © muveo.sytes.net 2015
+</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+    var map;
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(40.405268, -3.834794),
+            zoom: 14
+        };
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
+</html>

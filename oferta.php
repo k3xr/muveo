@@ -10,101 +10,101 @@
 <?php include 'header.php'; ?>
 <!-- Header End-->
 
-<div id="main-container">
-    <div class="container">
-        <div class="row">
-            <section id="datos-oferta-section" class="col-12-lg">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Overview de la oferta  -->
-                        <aside id="overview" class="col-4-md">
-                            <h3><strong>Anunciante</strong></h3>
-                            <h4> <em> Profesión </em> </h4>
-                            <hr>
-                            <span>
-                                <img id="avatar" src="./images/avatar_test.jpg" class="img-responsive">
-                            </span>
-                            <span id="rating">
-                                <h5 style="margin-bottom:5px"> <strong>Valoración:</strong></h5>
-                                <span class="glyphicon glyphicon-star estrella"></span>
-                                <span class="glyphicon glyphicon-star estrella"></span>
-                                <span class="glyphicon glyphicon-star-empty estrella"></span>
-                                <span class="glyphicon glyphicon-star-empty estrella"></span>
-                                <span class="glyphicon glyphicon-star-empty estrella"></span>
-                            </span>
+<div id="main-container" class="container">
+    <div class="row">
+        <!-- Overview de la oferta  -->
+        <aside id="overview" class="col-md-3">
+            <div id=anuncio>
+                <h4><strong> Clases de programación </strong></h4>
+                    <span>
+                        <img id="avatar" src="images/clasesProgramacion.jpg" class="img-responsive">
+                    </span>
+            </div>
+            <div id="author">
+                <img id=im_perfil src="http://rumberanetwork.com/wp-content/uploads/2014/06/cara-delevingne-wallpaper-1848598319.jpg" class="img-responsive">
+                <a href="perfil.php?id=PHPID"><h4><strong>Elena Nito del Bosque</strong></h4></a>
+                <h5> <em> Soy programadora </em> </h5>
+            </div>
+            <hr>
+                <span id="rating">
+                    <h5 style="margin-bottom:5px"> <strong>Valoración:</strong></h5>
+                    <span class="glyphicon glyphicon-star estrella"></span>
+                    <span class="glyphicon glyphicon-star estrella"></span>
+                    <span class="glyphicon glyphicon-star-empty estrella"></span>
+                    <span class="glyphicon glyphicon-star-empty estrella"></span>
+                    <span class="glyphicon glyphicon-star-empty estrella"></span>
+                </span>
 
-                            <h6><strong>Registrado desde:</strong></h6>
-                            <span id="fecha_registro"> Abril 2015</span>
-                            <h6><strong>País:</strong></h6>
-                            <span id="nacionalidad"> España </span>
-                            <address id="contacto-anunciante">
-                                <h6><strong>Contacto: </strong></h6>
-                                <a href="mailto:#"><strong>first.last@example.com</strong></a>
-                            </address>
-                            <hr>
-                            <h4><strong>Formación/Descripción</strong></h4>
-                            <p>
-                                Quick and Creative IT Fingers Providing Web Solutions In:-
-                                <br><br>
-                                PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
-                                <br><br>
-                                Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
-                                <br><br>
-                                We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
-                                <br><br>
-                                We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
-                            </p>
-                        </aside>
-                        <!-- Overview de la oferta -->
-                        <!-- Datos de la oferta -->
-                        <div id="datos-oferta" class="col-offset-4-md col-8-md">
-                            <button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-                                <span class="glyphicon glyphicon-hand-right">
-                                </span>
-                                Contratar
-                            </button>
-                            <button class="btn btn-default glyphicon glyphicon-cog" hidden id="preferencias" style="float: right"></button>
-                            <h3> <strong> Título anuncio </strong></h3>
-                            <h4> Descripción </h4>
-                            <hr>
-                            <p>
-                                PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
-                                <br><br>
-                                Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
-                                <br><br>
-                                We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
-                                <br><br>
-                                We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
-                            </p>
-                            <h4> Datos </h4>
-                            <hr>
-                            <ul class="list-unstyled">
-                                <li> Fecha de publicación: <span>6 de abril de 2015</span> </li>
-                                <li> Horario: <span>19:00 - 20:00</span> </li>
-                                <li> Precio: <span>12€/hora</span></li>
-                                <li> Idioma: <span>Español/Inglés</span></li>
-                                <li> Localizacion: <span>UPM Campus de Montegancedo</span></li>
-                            </ul>
-                            <div id="location-map">
-                                <h4> Mapa </h4>
-                                <hr>
-                                <div id="map"></div>
-                            </div>
-                            <div id="tag-list">
-                                <h4>
-                                    Temas relacionados
-                                </h4>
-                                <hr>
-                                <a class="tag" href=""> HTML </a>
-                                <a class="tag" href=""> CSS </a>
-                                <a class="tag" href=""> JavaScript </a>
-                            </div>
-                        </div>
-                        <!-- Datos de la oferta -->
-                    </div>
-                </div>
-            </section>
+            <h6><strong>Registrado desde:</strong></h6>
+            <span id="fecha_registro"> Abril 2015</span>
+            <h6><strong>País:</strong></h6>
+            <span id="nacionalidad"> España </span>
+            <address id="contacto-anunciante">
+                <h6><strong>Contacto: </strong></h6>
+                <a href="mailto:#"><strong>first.last@example.com</strong></a>
+            </address>
+            <hr>
+            <h4><strong>Formación/Descripción</strong></h4>
+            <p>
+                function(){
+                asdjjsajfajjsd
+                <br><br>
+                Quick and Creative IT Fingers Providing Web Solutions In:-
+                <br><br>
+                PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
+                <br><br>
+                Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
+                <br><br>
+                We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
+                <br><br>
+                We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
+            </p>
+        </aside>
+        <!-- Overview de la oferta -->
+        <!-- Datos de la oferta -->
+        <div id="datos-oferta" class="col-8-md">
+            <button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                    <span class="glyphicon glyphicon-hand-right">
+                    </span>
+                Contratar
+            </button>
+            <h4> Descripción de la oferta</h4>
+            <hr>
+            <p>
+                PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
+                <br><br>
+                Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
+                <br><br>
+                We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
+                <br><br>
+                We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
+            </p>
+            <h4> Especificaciones de la oferta</h4>
+            <hr>
+            <ul class="list-unstyled">
+                <li> <strong>Fecha de publicación: </strong><span>6 de abril de 2015</span> </li>
+                <li> <strong>Categoría: </strong><span>Clases particulares</span> </li>
+                <li> <strong>Precio: </strong><span>12,50 €/hora</span></li>
+                <li> <strong>Idioma: </strong><span>Español</span></li>
+                <li> <strong>Provincia: </strong><span> Madrid</span></li>
+                <li> <strong>Localizacion: </strong><span>UPM Campus de Montegancedo</span></li>
+            </ul>
+            <!-- <div id="location-map">
+                 <h4> Mapa </h4>
+                 <hr>
+                 <div id="map"></div>
+             </div>-->
+            <div id="tag-list">
+                <h4>
+                    Temas relacionados
+                </h4>
+                <hr>
+                <span class="tag"> HTML </span>
+                <span class="tag"> CSS </span>
+                <span class="tag"> JavaScript </span>
+            </div>
         </div>
+        <!-- Datos de la oferta -->
     </div>
 </div>
 

@@ -1,3 +1,10 @@
+<?php
+include_once 'php/db_connect.php';
+include_once 'php/functions.php';
+
+sec_session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head lang="es">
@@ -53,186 +60,22 @@
 
                 <!-- List group -->
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-2 text-center">
-                                        <img src="/images/avatar_test.jpg" alt="bootsnipp"
-                                             class="img-rounded img-responsive" />
-                                    </div>
-                                    <div class="col-xs-12 col-md-8 section-box">
-                                        <h3><a href="oferta.php">
-                                            Clases particulares desarrollo web </a>
-                                        </h3>
-                                        <p>
-                                            Aprende HTML/CSS/JS en tan solo 6 días!</p>
-                                        <hr />
-                                        <div class="row rating-desc">
-                                            <div class="col-md-12">
-                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span>(36)<span class="separator">|</span>
-                                                <span class="glyphicon glyphicon-comment"></span>(100 Comments)
-                                                <span class="glyphicon glyphicon-euro"></span>20/Hora
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <?php
+                    $posts = $db_try->getRowsWithPaging('Oferta',
+                        $_GET['_pno'], $_SERVER['PHP_SELF'], null, null, null, null, 5);
 
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-2 text-center">
-                                        <img src="http://rumberanetwork.com/wp-content/uploads/2014/06/cara-delevingne-wallpaper-1848598319.jpg" alt="bootsnipp"
-                                             class="img-rounded img-responsive" />
-                                    </div>
-                                    <div class="col-xs-12 col-md-8 section-box">
-                                        <h3><a href="oferta.php">
-                                            Clases de Oso Yoga en Fuenlabrada CITY! </a>
-                                        </h3>
-                                        <p>
-                                            Se busca clases de Oso yoga en puntos conflictivos de Madrid!</p>
-                                        <hr />
-                                        <div class="row rating-desc">
-                                            <div class="col-xs-12 col-md-12">
-                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span>(3)<span class="separator">|</span>
-                                                <span class="glyphicon glyphicon-comment"></span>(2 Comments)
-                                                <span class="glyphicon glyphicon-euro"></span>200/Hora (Zona conflictiva)
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-2 text-center">
-                                        <img src="/images/clasesProgramacion.jpg" alt="bootsnipp"
-                                             class="img-rounded img-responsive" />
-                                    </div>
-                                    <div class="col-xs-12 col-md-8 section-box">
-                                        <h3><a href="oferta.php">
-                                            Clases de Programación </a>
-                                        </h3>
-                                        <p>Java</p>
-                                        <hr/>
-                                        <div class="row rating-desc">
-                                            <div class="col-xs-12 col-md-12">
-                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span>(45)<span class="separator">|</span>
-                                                <span class="glyphicon glyphicon-comment"></span>(50 Comments)
-                                                <span class="glyphicon glyphicon-euro"></span>150/Hora
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-2 text-center">
-                                        <img src="/images/clasesBaile.jpg" alt="bootsnipp"
-                                             class="img-rounded img-responsive" />
-                                    </div>
-                                    <div class="col-xs-12 col-md-8 section-box">
-                                        <h3><a href="oferta.php">
-                                            Clases de Baile </a>
-                                        </h3>
-                                        <p>Baile de salón</p>
-                                        <hr/>
-                                        <div class="row rating-desc">
-                                            <div class="col-xs-12 col-md-12">
-                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span>(0)<span class="separator">|</span>
-                                                <span class="glyphicon glyphicon-comment"></span>(60000 Comments)
-                                                <span class="glyphicon glyphicon-euro"></span>3/Hora
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-2 text-center">
-                                        <img src="/images/clasesCocina.jpg" alt="bootsnipp"
-                                             class="img-rounded img-responsive" />
-                                    </div>
-                                    <div class="col-xs-12 col-md-8 section-box">
-                                        <h3><a href="oferta.php">
-                                            Clases de Cocina </a>
-                                        </h3>
-                                        <p>Cocina creativa</p>
-                                        <hr/>
-                                        <div class="row rating-desc">
-                                            <div class="col-xs-12 col-md-12">
-                                                <span class="glyphicon glyphicon-stars"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
-                                                </span><span class="glyphicon glyphicon-star"></span>(800)<span class="separator">|</span>
-                                                <span class="glyphicon glyphicon-comment"></span>(3 Comments)
-                                                <span class="glyphicon glyphicon-euro"></span>900000/Hora
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-2 section-box hireButton">
-                                        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-hand-right"></span> Hire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="panel-footer text-center">
-                    <nav>
-                        <ul class="pagination ">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                    if (isset($posts) && $posts->isAnyDataAvailable()) {
+                        $postsdata = $posts->get();
+                        foreach ($postsdata as $schl) {
+                            include "oferta_busqueda.php";
+                        }
+
+                    }
+                    # pagination here
+                    echo '<div class="col-md-offset-5">';
+                    echo '<p class="text-center">' . $posts . '</p>';
+                    echo '</div>';
+                    ?>
             </div>
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->

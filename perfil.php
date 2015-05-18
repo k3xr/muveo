@@ -4,15 +4,10 @@ include_once 'php/functions.php';
 
 sec_session_start();
 
-if (login_check($mysqli) == true) {
-    $logged = 'in';
-} else {
-    $logged = 'out';
-}
 if(isset($_GET['id'])){
     $id=$_GET['id'];
 }
-foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=".$id)as $user);
+foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $user);
 
 ?>
 <!DOCTYPE html>
@@ -22,10 +17,6 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=".$id)as $user);
     <?php include 'head.php'; ?>
     <link href="css/perfil.css" rel="stylesheet">
     <title>Muveo - Perfil</title>
-
-    <script type="text/JavaScript" src="js/sha512.js"></script>
-    <script type="text/JavaScript" src="js/forms.js"></script>
-    <![endif]-->
 </head>
 
 <body>

@@ -96,20 +96,18 @@ nav {
     background-color: #ffffff !important;
 }
 
-button.btn-primary {
-    text-shadow: 0px 1px 0px #000;
-    /*background-color: #2B6FB6;*/
-    border: 0px;
-    padding: 8px;
+button:hover {
+/*    background-color: #337ab7;*/
+/*    background-image: linear-gradient(to bottom, #005684 0px, #265A88 100%);*/
+/*    border: 0px;*/
+/*    padding: 8px;*/
     font-weight: bold;
-    background-image: linear-gradient(to bottom, #337AB7 0px, #265A88 100%);
-    /*background-image: linear-gradient(to bottom, #2B6FB6 0px, #337ab7 100%);*/
 }
 
-button.btn-primary:hover {
-    /*background-color: #337ab7;*/
-    background-image: linear-gradient(to bottom, #005684 0px, #265A88 100%);
-    border: 0px;
-    padding: 8px;
+.btn{
+/*    text-shadow: 0px 1px 0px #000;*/
+    margin-top: 2px;
+    font-size: 12px !important;
+    text-align: center;
     font-weight: bold;
 }
