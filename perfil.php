@@ -21,108 +21,105 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
 
 <body>
 
-<div id="container">
-    <div id="header">
-        <!-- Header -->
-        <?php include 'header.php'; ?>
-    </div>
-    <!-- Header End-->
-
-<div id="body">
-    <div class="container" id="container-default">
-        <div class="row" id="info-pral">
-            <div class="col-md-4">
-                <?php
+<div id="header">
+    <!-- Header -->
+    <?php include 'header.php'; ?>
+</div>
+<!-- Header End-->
+<div class="container main-container">
+    <h2>
+        <?php
+        if($user['nbUsuario']==$_SESSION['username']){
+            echo 'Mi perfil';
+        }
+        else{
+            printf("Perfil de %s %s",$user['nombre'],$user['apellidos']);
+        }
+        ?>
+        <?php
+        if($user['tipoUsuario']==0) {
+            echo '<span class="tag" style="bottom: 10px; position: relative; background-color: #149bdf">Contratante</span>';
+        }
+        else{
+            echo '<span class="tag" style="bottom: 10px; position: relative">Ofertante</span>';
+        }
+        ?>
+    </h2>
+    <hr>
+    <div class="row">
+        <aside class="col-md-3">
+            <img id="avatar" src="<?php printf("%s",$user['avatarPath'])?>" class="img-responsive img-rounded">
+            <?php
+            if($user['nbUsuario']==$_SESSION['username']){
                 printf("
-                <img id=\"avatar\" src=\"%s\" class=\"img-responsive img-rounded\">
-                ", $user['avatarPath']);
-
-                printf("
-                 <span class=\"valoracion val-%d\"></span>
-                ", $user['valoracion']);
-                ?>
-
-            </div>
-            <div class="col-md-8">
-                <h2>
-                    <?php
-                    printf("%s %s",$user['nombre'],$user['apellidos']);
-                    ?>
-                </h2>
-                    <?php
-                    if($user['nbUsuario']==$_SESSION['username']){
-                        printf("
                         <a href=\"editar_perfil.php\">
-                            <button class=\"btn btn-default glyphicon glyphicon-cog\"></button>
+                            <button id=\"editar_preferencias\" class=\"btn btn-primary\">Editar perfil</button>
                         </a>
                         ");
-                    }
-                    ?>
-                <h4>
-                    <?php
-                    printf("%s",$user['nacionalidad'])
-                    ?>
-                </h4>
-                <h4>
-                    <?php
-                    printf("%s",$user['email']);
-                    ?>
-
-                </h4>
+                # glyphicon glyphicon-cog
+            }
+            ?>
+        </aside>
+        <div class="col-md-8" id="overview">
+            <h4>Valoración: <span class="rating"><?php printf('%d',$user['valoracion'])?></span></h4>
+            <div id="rating">
+                <span class="valoracion val-<?php printf("%d",$user['valoracion'])?>"></span>
             </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-5" id="conocimientos">
-                <h2>Formación</h2>
-                <hr/>
-                <p>
-                    <?php
-                    printf("%s",$user['formacion']);
-                    ?>
-                </p>
-            </div>
-
-            <div class="col-md-5" id="ofertas">
+            <h4>Nacionalidad:</h4>
+            <?php
+            printf("%s",$user['nacionalidad'])
+            ?>
+            <h4>Contacto:</h4>
+            <ul>
                 <?php
+                printf("<li>Email: %s</li>",$user['email']);
+                printf("<li>Teléfono: %s</li>",$user['telefono']);
+                ?>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <?php
+        if($user['tipoUsuario']==1) {
+            echo '<div class="col-lg-12" id="conocimientos"><h3>Habilidades y formación</h3><hr/>';
+            echo '<p>';
+            printf("%s",$user['formacion']);
+            echo '</p>';
+            echo '</div>';
+        }
+        ?>
+        <div class="col-lg-12" id="ofertas">
+            <?php
+            if($user['tipoUsuario']==1){
                 if($user['nbUsuario']==$_SESSION['username']){
                     printf("
                     <a href=\"nueva_oferta.php\">
-                        <button class=\"btn btn-default glyphicon glyphicon-plus-sign btn-add\"></button>
+                        <button class=\"btn btn-primary glyphicon glyphicon-plus-sign btn-add\"></button>
                     </a>
                     ");
+
+                }
+                echo '<h3>Ofertas realizadas</h3>';
+            }
+            else{
+                echo '<h3>Ofertas contratadas</h3>';
+            }
+            ?>
+            <hr/>
+            <ul class="list-group" >
+                <?php
+                foreach($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=".$user['idUsuario'])as $oferta) {
+                    printf('<a href="oferta.php?id=%d"><li class="list-group-item">%s</li></a>', $oferta['idOferta'], $oferta['titulo']);
                 }
                 ?>
-
-                <h1>Ofertas</h1>
-                <hr/>
-                <ul class="list-group" >
-                    <?php
-                    foreach($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=".$user['idUsuario'])as $oferta){
-                        printf("
-                    <a href=\"oferta.php\">
-                        <li class=\"list-group-item\">
-                        %s
-                        </li>
-                    </a>
-                    ",$oferta['titulo']);
-                    }
-                    ?>
-                </ul>
-            </div>
+            </ul>
         </div>
     </div>
-
 </div>
-<div id="footer">
-    <!-- Footer -->
-    <footer id="lema" class="">
-        © muveo.sytes.net 2015
-    </footer>
-</div>
-</div>
-
-
+<!-- Footer -->
+<footer id="lema" class="">
+    © muveo.sytes.net 2015
+</footer>
 
 <!-- Modal para login -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">

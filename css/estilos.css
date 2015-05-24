@@ -1,113 +1,174 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-}
-
-#navigationHeader{
-    margin-bottom: 0px;
-}
-
 body{
-    height: 100%;
-    width: 100%;
-    position:absolute;
-}
-
-#PanelInicio {
-    color: white;
-    text-shadow: 0px 1px 1px #222;
-    font-weight: bolder;
-    font-size: larger;
-}
-
-#subtituloPrincipal{
-    font: bold 14px verdana, sans-serif;
-}
-
-#container-full{
+    margin-top: 70px;
     background-image: url("/images/backgroundIndex.jpg");
-    /*opacity: 0.7;*/
-    /*color: #000000;*/
-    margin: 0 auto;
-    min-height: 100%;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 10%; /* 150px */
+    margin-bottom: 70px;
 }
-
-#espacioTitulo{
-    width: 500px;
-    margin: 50px auto;
-    padding: 15px;
-    border: 1px solid #999999;
-    background: #DDDDDD;
-    border-radius: 20px;
+section{
+    left: auto;
+    right: auto;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+footer{
     text-align: center;
-}
-
-#tituloPrincipal{
-    font: bold 36px verdana, sans-serif;
-}
-
-#loginModal{
-    text-align: center;
-}
-
-#selector{
-    width: 100%;
-    height: 40%;
-    text-align: center;
-}
-
-
-#trabajo,#botonAtras,#clases {
-    width: 50%;
-    height: 20%;
-    border: solid;
-    border-width: 0 0 0 0;
-    margin: 5px 5px 5px 5px;
-}
-
-#lema{
-    text-align: center;
-}
-
-#SearchBar{
-    visibility: hidden;
-}
-
-footer {
+    margin-top: 20px;
     height:50px;
     bottom:0px;
     left:0px;
     right:0px;
     padding: 10px;
+    margin-bottom:0px;
     color: black;
     background-color: #ffffff;
     text-align: center;
+    font-size: smaller;
+    position: fixed;
+}
+
+hr {
+	/*margin-top: 10px;
+	margin-bottom: 10px;*/
+}
+
+section > p{
+    text-align: justify;
 }
 
 .navbar-brand{
     padding: 0px;
 }
-
 nav {
     background-color: #ffffff !important;
 }
 
-button:hover {
-/*    background-color: #337ab7;*/
-/*    background-image: linear-gradient(to bottom, #005684 0px, #265A88 100%);*/
-/*    border: 0px;*/
-/*    padding: 8px;*/
-    font-weight: bold;
+.main-container{
+    background-color: white;
+    width: 85%;
+    padding: 20px 50px 20px 50px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 100px #222;
+    min-width: 390px; /* Minimo para display en moviles */
 }
 
+/* Estilo de botones */
+button{
+    font-weight: bold;
+}
 .btn{
-/*    text-shadow: 0px 1px 0px #000;*/
     margin-top: 2px;
     font-size: 12px !important;
     text-align: center;
     font-weight: bold;
+}
+#boton-sesion{
+    float: right;
+}
+/* Estilo de botones */
+
+/* Estilo de formularios */
+.form-control{
+    font-size: 12px !important;
+    border-radius: 4px;
+/*    height: 28px !important;*/
+}
+.input-group-addon{
+    background-color: white;
+    border: 0px solid;
+    margin-left: 3px;
+}
+.form-group{
+    padding-bottom: 0px;
+}
+/* Estilo de formularios */
+
+/* Estilo modal de login */
+.modal-header {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+/* Estilo modal de login */
+
+/* Miscelaneo */
+
+.avatar_perfil{
+    height: 32px;
+    width: 32px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.dropdown-toggle{
+    padding: 10px 0px 0px 0px; !important;
+}
+
+span.rating{
+    padding: 6px 12px 6px 12px;
+    color: white;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", sans-serif;
+    margin-left: 5px;
+    font-size: 14px;
+    position: relative;
+    bottom: 3px;
+}
+
+.val-fieldset {
+    width:100px;
+    border:none;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.valoracion {
+    width: 100px;
+    height: 21px;
+    display: block;
+    background:url(http://lh5.googleusercontent.com/-Sp-iHFztZdc/UVD89O9oM1I/AAAAAAAAEU0/Xh-FBDaWyJY/s000/estrellas.png) 0 0 no-repeat;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.val-0 {background-position: -100px -0;}
+.val-5 {background-position: -81px -21px;}
+.val-10 {background-position: -81px 0;}
+.val-15 {background-position: -61px -21px;}
+.val-20 {background-position: -60px 0;}
+.val-25 {background-position: -40px -21px;}
+.val-30 {background-position: -40px 0;}
+.val-35 {background-position: -21px -21px;}
+.val-40 {background-position: -21px 0;}
+.val-45 {background-position: 0 -21px;}
+.val-50 {background-position: 0 0;}
+
+
+.tag {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: cornflowerblue;
+    color: aliceblue;
+    margin: 2px;
+    font-size: 12px;;
+}
+
+.tag:hover{
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+}
+
+.estrella {
+    color: #ffd700;
+}
+
+/* Miscelaneo */
+*[hidden]{
+    display: none;
 }

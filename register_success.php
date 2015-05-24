@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Secure Login: Registration Success</title>
+    <title>Registro terminado</title>
     <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
-<h1>Registration successful!</h1>
-<p>You can now go back to the <a href="index.php">login page</a> and log in</p>
+<h1>Registro terminado con éxito</h1>
+<p>Volver a la <a href="index.php">página de inicio</a> para iniciar sesión</p>
 </body>
 </html>

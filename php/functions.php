@@ -27,14 +27,14 @@ function sec_session_start() {
 
 function login($username, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible.
-    if ($stmt = $mysqli->prepare("SELECT idUsuario, nbUsuario, password, salt
+    if ($stmt = $mysqli->prepare("SELECT idUsuario, nbUsuario, password, salt, avatarPath
                 FROM Usuario WHERE nbUsuario = ? LIMIT 1")) {
         $stmt->bind_param('s', $username);  // Bind "$username" to parameter.
         $stmt->execute();    // Execute the prepared query.
         $stmt->store_result();
 
         // get variables from result.
-        $stmt->bind_result($user_id, $username, $db_password, $salt);
+        $stmt->bind_result($user_id, $username, $db_password, $salt, $avatar);
         $stmt->fetch();
 
         // hash the password with the unique salt.
@@ -50,6 +50,7 @@ function login($username, $password, $mysqli) {
             } else {
                 // Check if the password in the database matches the password the user submitted.
                 if ($db_password == $password) {
+
                     // Password is correct!
                     // Get the user-agent string of the user.
                     $user_browser = $_SERVER['HTTP_USER_AGENT'];
@@ -62,6 +63,7 @@ function login($username, $password, $mysqli) {
                         $username);
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
+                    $_SESSION['avatar'] = $avatar;
                     // Login successful..
 
                     return true;
@@ -194,8 +196,12 @@ function matching($word, $mysqli){
     $resultArray = array();
     $toSearch = "%".$word."%";
 
-    if ($stmt = $mysqli->prepare("SELECT idOferta FROM Oferta WHERE titulo like ?")) {
-        $stmt->bind_param('s', $toSearch);
+    if ($stmt = $mysqli->prepare("SELECT distinct Oferta.idOferta FROM Oferta, EtiquetasOferta, Etiqueta WHERE
+                                        Oferta.titulo LIKE ? OR (Oferta.idOferta = EtiquetasOferta.idOferta
+                                        AND EtiquetasOferta.idEtiqueta = Etiqueta.idEtiqueta AND Etiqueta.nombre LIKE ?)")) {
+
+//    if ($stmt = $mysqli->prepare("SELECT idOferta FROM Oferta WHERE titulo like ?")) {
+        $stmt->bind_param('ss', $toSearch, $toSearch);
         $stmt->execute();
         $stmt->store_result();
 

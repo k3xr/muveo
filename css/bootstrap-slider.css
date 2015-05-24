@@ -39,13 +39,20 @@
   top: 50%;
   left: 0;
 }
-.slider.slider-horizontal .slider-selection,
 .slider.slider-horizontal .slider-track-low,
 .slider.slider-horizontal .slider-track-high {
   height: 100%;
   top: 0;
   bottom: 0;
 }
+
+.slider.slider-horizontal .slider-selection{
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background: rgb(219, 219, 247);
+}
+
 .slider.slider-horizontal .slider-tick,
 .slider.slider-horizontal .slider-handle {
   margin-left: -10px;

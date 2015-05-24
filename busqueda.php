@@ -19,57 +19,98 @@ sec_session_start();
 <?php include 'header.php'; ?>
 <!-- Header End-->
 
-<div class="container">
-    <div class="row row-offcanvas row-offcanvas-left">
+<div class="container main-container">
+    <div class="row">
         <!-- sidebar -->
-        <div class="col-xs-12 col-md-3 sidebar-offcanvas" id="sidebar" role="navigation">
-            <ul class="nav" style="background: #ffffff">
-                <li>Precio: <br><br><input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/></li>
-                <br>
-                <li><span id="ex6CurrentSliderValLabel">Comentarios: <span id="ex6SliderVal">3 </span></span><input id="ex7-enabled" type="checkbox"/>
-                    <input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-enabled="false" data-slider-value="0"/&t
-                </li>
-                <br>
-                <br>
-                <li><a href="#">Everyone</a></li>
-                <li><a href="#">Individual</a></li>
-                <li><a href="#">Companies</a></li>
-            </ul>
-        </div>
+        <aside class="col-xs-12 col-md-3" id="sidebar" role="navigation">
+            <h4><strong>Filtros de búsqueda</strong></h4>
+            <form class="form-horizontal" method="post" action="busqueda.php">
+                <div class="form-group">
+                    <label for="" class="control-label">Precio</label>
+                    <input id="ex2" type="text" class="col-lg-2 span2" value="Precio" data-slider-min="5.0"
+                           data-slider-max="100.0" data-slider-step="0.5" data-slider-value="[5.0,100.0]"
+                           name="precio"/>
 
-        <!-- search bar -->
-        <div class="col-xs-12 col-md-9">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
                 </div>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Valoración</label>
+                    <input id="ex10" type="text" data-slider-max="5.0" data-slider-handle="custom" value=""
+                           name="comentarios" data-slider-value="1"/>
+                </div>
+                <div class="form-group">
+                    <label for="categoria" class="control-label">Categoría</label>
+                    <select id="categoria" class="col-sm-4 form-control input-sm" name="categoria">
+                        <option value="other">Sin especificar</option>
+                        <option value="web_programming">Programación Web</option>
+                        <option value="web_design">Diseño Web</option>
+                        <option value="inteligencia_empresarial">Inteligencia Empresarial</option>
+                        <option value="abogacia">Abogacia</option>
+                        <option value="clases">Clases particulares</option>
+                        <option value="analisis_datos">Análisis de datos</option>
+                        <option value="diseno_grafico">Diseño Gráfico</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" value="Login">
+                    Aplicar Filtros
+                </button>
+            </form>
+        </aside>
         <!-- search bar -->
-
-        <!-- main area -->
         <div class="col-xs-12 col-md-9" id="mainPanel">
+            <!-- search bar -->
+            <form id="searchForm" class="form-horizontal" method="post" action="busqueda.php">
+                <h4><strong>Barra de búsqueda</strong></h4>
+                <div class="input-group col-lg-12">
+                    <input type="text" name="busqueda" class="col-lg-4 form-control" placeholder="Busca algún tema o actividad que te interese."/>
+                   <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>Buscar
+                    </button>
+                   </span>
+                </div>
+            </form>
+            <!-- search bar -->
             <div class="panel panel-info">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Resultados Búsqueda</div>
-
+                <div class="panel-heading"><strong>Resultados de la búsqueda</strong></div>
                 <!-- List group -->
                 <ul class="list-group">
                     <?php
+
+                    //INI: Caso de busqueda
+                    $arrayOfertasAMostrar = null;//array(1);
+                    if (isset($_POST['busqueda'])) {
+                        $arrayOfertasAMostrar = matching($_POST['busqueda'], $mysqli);
+                        $arrayOfertasAMostrar = ' idOferta IN (' .
+                            implode(',', array_map('intval', $arrayOfertasAMostrar)) . ')';
+                    }
+
+                    if (isset($_POST['comentario'])) {
+                        $arrayOfertasAMostrar = matching($_POST['busqueda'], $mysqli);
+                        $arrayOfertasAMostrar = ' idOferta IN (' .
+                            implode(',', array_map('intval', $arrayOfertasAMostrar)) . ')';
+                    }
+                    //FIN: Caso de busqueda
+
+                    //INI: Filtros
+                    $rango_precio = explode(",", $_POST['precio']);
+                    $_POST['comentarios'] = (is_numeric($_POST['comentarios']) ? (int)$_POST['comentarios'] : 0);
+                    if (isset($_POST['precio']) && isset($_POST['comentarios']) && isset($_POST['categoria'])) {
+                        $arrayOfertasAMostrar = $arrayOfertasAMostrar." precio BETWEEN "
+                            .$rango_precio[0]." AND ".$rango_precio[1]. " AND valoracion >= ".
+                            $_POST['comentarios']." AND categoria='".$_POST['categoria']."'";
+                    }
+                    //FIN: Filtros
+
+
                     $posts = $db_try->getRowsWithPaging('Oferta',
-                        $_GET['_pno'], $_SERVER['PHP_SELF'], null, null, null, null, 5);
+                        $_GET['_pno'], $_SERVER['PHP_SELF'], $arrayOfertasAMostrar, null, null, null, 5);
 
                     if (isset($posts) && $posts->isAnyDataAvailable()) {
                         $postsdata = $posts->get();
                         foreach ($postsdata as $schl) {
                             include "oferta_busqueda.php";
                         }
-
                     }
                     # pagination here
                     echo '<div class="col-md-offset-5">';
@@ -77,11 +118,15 @@ sec_session_start();
                     echo '</div>';
                     ?>
             </div>
-        </div><!-- /.col-xs-12 main -->
-    </div><!--/.row-->
-</div><!--/.container-->
+        </div>
+        <!-- /.col-xs-12 main -->
+    </div>
+    <!--/.row-->
+</div>
+<!--/.container-->
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -95,12 +140,14 @@ sec_session_start();
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
+
                         <div class="col-xs-6">
                             <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
+
                         <div class="col-xs-6">
                             <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
                         </div>
@@ -128,21 +175,11 @@ sec_session_start();
 <script>
     $("#ex2").slider({});
     $("#ex6").slider();
-    $("#ex6").on("slide", function(slideEvt) {
+    $("#ex6").on("slide", function (slideEvt) {
         $("#ex6SliderVal").text(slideEvt.value);
     });
     // With JQuery
-    $("#ex6").slider();
-    $("#ex7-enabled").click(function() {
-        if(this.checked) {
-            // With JQuery
-            $("#ex6").slider("enable");
-        }
-        else {
-            // With JQuery
-            $("#ex6").slider("disable");
-        }
-    });
+    $("#ex10").slider({});
 </script>
 
 </body>

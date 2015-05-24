@@ -1,43 +1,12 @@
-*[hidden]{
-    display: none;
-}
-
-.estrella {
-/*    color: #ffd700;*/
-}
-
-.navbar{
-	border-radius: 0px;
-}
-
-.modal-header {
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
-.form-group {
-	margin-bottom: 5px;
-}
-
-.tag-list {
-
-}
-
-.modal-open .no-jump {
-overflow-y:scroll;
-}
-
 #rating {
 	margin: 0px;
 }
 
-#avatar {
+
+#portada {
 	max-width: 225px;
-	max-height: 225x;
-	border: 1px;
-    border-color: #BCE8F1;
-	border-style: solid;
+	max-height: 225px;
+	border: solid 1px #BCE8F1;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 5px;
@@ -52,125 +21,28 @@ overflow-y:scroll;
     margin: 10px;
 }
 
-#bio {
-	max-height: 200px;
-}
-
-
 #btn-contratar {
 	float: right;
 	position: relative;
-	margin-bottom: 10px;
-}
-
-#datos-oferta{
-	font-size: 13px;
-	background-color:#ffffff;
-    display: block;
-}
-
-#map{
-	display:inline-block;
-	background-color: grey;
-	left: auto;
-	right: auto;
-	width: 500px;
-	height: 300px;
-	text-align: center;
-	vertical-align: central;
+/*	margin-bottom: 10px;*/
 }
 
 #overview {
-    display: inline-block;
-    border: 1px;
-    border-style: solid;
-    border-color: #BCE8F1;
+    /*display: inline-block;*/
+    border: solid 1px #BCE8F1;
     color: #31708F;
 	background-color:#D9EDF7;
-	min-height: 1000px;
     font-size: 13px;
     padding: 12px;
 	text-align: left;
-}
-
-#main-container {
-    background-color: white;
-    width: 85%;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
     border-radius: 5px;
-    box-shadow: 1px 1px 100px #222;
+    padding: 0px 20px;
+    margin: 0px 20px;
+    min-width: 280px;
 }
 
 #loginModal {
 	overflow-y: auto;
-}
-
-nav {
-    background-color: #ffffff !important;
-}
-
-body {
-	margin-top: 70px;
-	/*background-image: url('http://i.imgur.com/NowYKD7.jpg');*/
-    background-image: url("/images/backgroundIndex.jpg");
-}
-
-aside {
-	border-radius: 5px;
-	width: 280px;
-	padding: 20px;
-	margin: 20px;
-	margin-top: 0px;
-	padding-top: 0px;
-	/*height: 955px;*/
-	/*max-height: 955px;*/
-	color: white;
-	text-align: left;
-}
-
-section {
-    clear: both;
-	border-radius: 5px;
-	float: left;
-	padding: 20px;
-	margin-bottom: 50px;
-	/*height: 1000px;*/
-	color: black;
-	text-align: justify;
-    border: solid 1px #d6d6d6;
-}
-
-/* Incluir en estilos.css */
-footer {
-     text-align: center;
-    margin-top: 20px;
-    height:50px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    padding: 10px;
-    margin-bottom:0px;
-    color: black;
-    background-color: #ffffff;
-    text-align: center;
-    font-size: smaller;
-}
-
-div > button {
-	margin: 5px;
-}
-
-hr {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-p {
-	margin-top: 2px;
-	margin-bottom: 2px;
 }
 
 h5, h6 {
@@ -178,41 +50,8 @@ h5, h6 {
 	margin-bottom: 10px;
 }
 
-aside > a {
-	color: #428BCA;
-}
-
-aside > hr {
+#overview > hr {
     border-color: #BCE8F1;
-}
-
-.tag {
-	font-weight: bold;
-	text-align: center;
-	padding: 3px;
-	border-radius: 4px;
-	background-color: cornflowerblue;
-	color: aliceblue;
-	margin: 2px;
-    font-size: 12px;;
-}
-
-.tag:hover{
-    background-color: grey;
-    color: white;
-    text-decoration: none;
-}
-
-/* estilos.css */
-a.navbar-brand {
-	padding-top: 0px;
-}
-
-/* estilos.css */
-
-#navbar-main {
-	border-top-width: 0px;
-	padding-top: 0px;
 }
 
 

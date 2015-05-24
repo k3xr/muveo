@@ -12,8 +12,7 @@ if (isset($_GET['error'])) {
 
 include_once 'php/functions.php';
 
-if (!login_check($mysqli)) {
-    echo '<div class="container">
+echo '<div class="container">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
@@ -23,8 +22,11 @@ if (!login_check($mysqli)) {
         <link rel="shortcut icon" href="images/muveo_icon.svg">
         <a class="navbar-brand" href="index.php"><img src="images/muveo_logo.svg"></a>
     </div>
+    <div class="navbar-collapse collapse" id="navbar-main">';
 
-    <div class="navbar-collapse collapse" id="navbar-main">
+if (!login_check($mysqli)) {
+
+    echo'
         <script type="text/JavaScript" src="js/sha512.js"></script>
         <script type="text/JavaScript" src="js/forms.js"></script>
         <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
@@ -40,25 +42,16 @@ if (!login_check($mysqli)) {
 </div>
 </div>';
 } else {
-    echo '<div class="container">
-    <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.php"><img src="images/icon_white.png"></a>
-    </div>
-
-    <div class="navbar-collapse collapse" id="navbar-main">
+    echo '
         <ul class="nav navbar-nav pull-right"  id="boton-sesion">
              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 10px 5px 0px 5px">
+                <img class="avatar_perfil" src="'.$_SESSION['avatar'].'"/>
                 ' . $_SESSION['username'] . '
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="perfil.php?nb=' . $_SESSION['username'] . '">Perfil</a></li>
+                    <li><a href="perfil.php?id=' . $_SESSION['user_id'] . '">Perfil</a></li>
                     <li><a href="php/process_logout.php">Log out</a></li>
                 </ul>
             </li>

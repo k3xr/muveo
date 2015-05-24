@@ -1,3 +1,16 @@
+<?php
+include_once 'php/db_connect.php';
+include_once 'php/functions.php';
+
+sec_session_start();
+
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+}
+foreach($mysqli->query("SELECT * FROM Oferta WHERE idOferta=\"".$id."\"")as $oferta);
+foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfertante']."\"")as $user);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,85 +23,136 @@
 <?php include 'header.php'; ?>
 <!-- Header End-->
 
-<div id="main-container" class="container">
+<div class="container main-container">
     <div class="row">
         <!-- Overview de la oferta  -->
-        <aside id="overview" class="col-md-3">
+        <aside id="overview" class="col-lg-3">
             <div id=anuncio>
-                <h4><strong> Clases de programación </strong></h4>
+                <h4><strong>
+                        <?php //Titulo Oferta
+                            printf("%s",$oferta['titulo']);
+                        ?>
+                    </strong></h4>
                     <span>
-                        <img id="avatar" src="images/clasesProgramacion.jpg" class="img-responsive">
+                        <?php //Imagen Oferta
+                            printf('<img id="portada" src="%s" class="img-responsive">',$oferta['portadaPath']);
+                        ?>
                     </span>
             </div>
             <div id="author">
-                <img id=im_perfil src="http://rumberanetwork.com/wp-content/uploads/2014/06/cara-delevingne-wallpaper-1848598319.jpg" class="img-responsive">
-                <a href="perfil.php?id=PHPID"><h4><strong>Elena Nito del Bosque</strong></h4></a>
-                <h5> <em> Soy programadora </em> </h5>
+                <?php //Imagen Ofertante
+                    printf('<img id=im_perfil src="%s" class="img-responsive">',$user['avatarPath']);
+
+                    //Nombre Ofertante
+                    printf('<a href="perfil.php?id=%d"><h4><strong>'.$user['nombre'].' '.$user['apellidos'].'</strong></h4></a>', $user['idUsuario']);
+                ?>
+
+                <!--<h5> <em> Soy programadora </em> </h5> -->
             </div>
             <hr>
                 <span id="rating">
                     <h5 style="margin-bottom:5px"> <strong>Valoración:</strong></h5>
+                    <?php //Valoracion oferta
+                        printf('<span class="valoracion val-%d"></span>', $oferta['valoracion']);
+                    ?>
+                    <!--
                     <span class="glyphicon glyphicon-star estrella"></span>
                     <span class="glyphicon glyphicon-star estrella"></span>
                     <span class="glyphicon glyphicon-star-empty estrella"></span>
                     <span class="glyphicon glyphicon-star-empty estrella"></span>
                     <span class="glyphicon glyphicon-star-empty estrella"></span>
+                    -->
                 </span>
-
+            <!--
             <h6><strong>Registrado desde:</strong></h6>
             <span id="fecha_registro"> Abril 2015</span>
+            -->
             <h6><strong>País:</strong></h6>
-            <span id="nacionalidad"> España </span>
+            <span id="nacionalidad">
+                <?php //Nacionalidad Ofertante
+                    printf("%s",$user['nacionalidad']);
+                ?>
+            </span>
             <address id="contacto-anunciante">
                 <h6><strong>Contacto: </strong></h6>
-                <a href="mailto:#"><strong>first.last@example.com</strong></a>
+                <?php //Email Ofertante
+                    printf('<a href="mailto:%s"><strong>'.$user['email'].'</strong></a>',$user['email']);
+                ?>
             </address>
             <hr>
             <h4><strong>Formación/Descripción</strong></h4>
             <p>
-                function(){
-                asdjjsajfajjsd
-                <br><br>
-                Quick and Creative IT Fingers Providing Web Solutions In:-
-                <br><br>
-                PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
-                <br><br>
-                Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
-                <br><br>
-                We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
-                <br><br>
-                We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
+                <?php //Formacion Ofertante
+                printf("%s",$user['formacion']);
+                ?>
             </p>
         </aside>
         <!-- Overview de la oferta -->
         <!-- Datos de la oferta -->
-        <div id="datos-oferta" class="col-8-md">
+        <section id="datos-oferta" class="col-lg-8">
             <button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
                     <span class="glyphicon glyphicon-hand-right">
                     </span>
                 Contratar
             </button>
-            <h4> Descripción de la oferta</h4>
-            <hr>
-            <p>
-                PHP5, MVC, .NET, Responsive Websites, HTML5, Parallax, Jquery, YII, Cake PHP, Bootstrap, WordPress, Joomla, Magento etc...
-                <br><br>
-                Lets discuss the needs and will deliver the results exactly ... in fact more than you expect for all areas in website designing and development. We are true experts for all web based solutions and our work history and positive feedback are saying it...
-                <br><br>
-                We do our work in an absurdly detail-oriented and communicative way. We like to spend time on new technologies by which we can convert our work more and more effective. We are 20 experts working in a team and everybody is expert in their respective technology.
-                <br><br>
-                We imagine that if a programmer/designer/developer understood all technologies perfectly, the time required for a project would only be the time spent typing out the few thousand lines of necessary code and all projects would be completed in a matter of hours, rather than days or weeks.
-            </p>
             <h4> Especificaciones de la oferta</h4>
             <hr>
             <ul class="list-unstyled">
-                <li> <strong>Fecha de publicación: </strong><span>6 de abril de 2015</span> </li>
-                <li> <strong>Categoría: </strong><span>Clases particulares</span> </li>
-                <li> <strong>Precio: </strong><span>12,50 €/hora</span></li>
-                <li> <strong>Idioma: </strong><span>Español</span></li>
-                <li> <strong>Provincia: </strong><span> Madrid</span></li>
-                <li> <strong>Localizacion: </strong><span>UPM Campus de Montegancedo</span></li>
+                <li> <strong>Fecha de publicación: </strong><span>
+                        <?php //Fecha Publicacion Oferta
+                            printf("%s",$oferta['fechaPublicacion']);
+                        ?>
+                    </span> </li>
+                <li> <strong>Categoría: </strong><span>
+                        <?php //Categoria Oferta
+                            printf("%s",$oferta['categoria']);
+                        ?>
+                    </span> </li>
+                <li> <strong>Precio: </strong><span>
+                        <?php //Precio Oferta
+                        printf("%d €",$oferta['precio']);
+                        ?>
+                    </span></li>
+                <li> <strong>Idioma: </strong><span>
+                        <?php //Idioma Oferta
+                            switch ($oferta['idioma']){
+                                case "en":
+                                    $idioma="Inglés";
+                                    break;
+                                case "es":
+                                    $idioma="Español";
+                                    break;
+                                case "fr":
+                                    $idioma="Francés";
+                                    break;
+                                case "ch":
+                                    $idioma="Chino";
+                                    break;
+                                case "de":
+                                    $idioma="Alemán";
+                                    break;
+                            }
+                            printf("%s",$idioma);
+                        ?>
+                    </span></li>
+                <li> <strong>Provincia: </strong><span>
+                        <?php //Provincia Oferta
+                            printf("%s",$oferta['provincia']);
+                        ?>
+                    </span></li>
+                <li> <strong>Localizacion: </strong><span>
+                        <?php //Localizacion Oferta
+                            printf("%s",$oferta['localizacion']);
+                        ?>
+                    </span></li>
             </ul>
+            <h4> Descripción de la oferta</h4>
+            <hr>
+            <p>
+                <?php //Descripcion Oferta
+                    printf("%s",$oferta['descripcion']);
+                ?>
+            </p>
             <!-- <div id="location-map">
                  <h4> Mapa </h4>
                  <hr>
@@ -99,11 +163,14 @@
                     Temas relacionados
                 </h4>
                 <hr>
-                <span class="tag"> HTML </span>
-                <span class="tag"> CSS </span>
-                <span class="tag"> JavaScript </span>
+                <?php //Tags Oferta
+                    foreach($mysqli->query("SELECT nombre FROM Etiqueta, EtiquetasOferta WHERE Etiqueta.idEtiqueta = EtiquetasOferta.idEtiqueta
+                    AND EtiquetasOferta.idOferta =".$oferta['idOferta'])as $tag){
+                        printf('<span class="tag">'.$tag.'</span>');
+                    }
+                ?>
             </div>
-        </div>
+        </section>
         <!-- Datos de la oferta -->
     </div>
 </div>

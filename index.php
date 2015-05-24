@@ -14,6 +14,7 @@ if (login_check($mysqli) == true) {
 <html>
 <head>
     <?php include 'head.php'; ?>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>Muveo</title>
 </head>
 
@@ -22,41 +23,48 @@ if (login_check($mysqli) == true) {
 <?php include 'header.php'; ?>
 <!-- Header End-->
 
-<div class="container-fluid" id="container-full">
+<div class="container" id="container-full">
     <div class="row">
-        <div class="col-lg-12 col-xs-12 text-center v-center" id="PanelInicio">
+        <div class="col-lg-12" id="PanelInicio">
             <h1 class="text-inverse">¿Qué buscas?</h1>
+
             <p class="text-inverse">Busca tu profesor particular o encuentra tu trabajo ideal</p>
+
             <div class="row">
-                <div class="col-md-offset-3 col-md-3 col-xs-12 v-center">
-                    <button class="btn btn-lg btn-primary" id="clases">Ofertas</button>
+                <div class="col-md-offset-3 col-md-3">
+                    <button class="btn btn-primary" id="clases">Ofertas</button>
                 </div>
-                <div class="col-md-3 col-xs-12 v-center">
-                    <button class="btn btn-lg btn-primary" id="trabajo" data-toggle="modal" data-target="#loginModal">Trabajo</button>
+                <div class="col-md-3">
+                    <button class="btn btn-primary" id="trabajo" data-toggle="modal" data-target="#loginModal">Trabajo
+                    </button>
                 </div>
 
                 <!-- INI: Search Bar-->
                 <div class="container" id="SearchBar">
                     <div class="row">
-                        <div class="col-xs-12 col-md-offset-3 col-md-6">
+                        <div class="col-md-offset-3 col-md-6">
                             <div id="custom-search-input">
-                                <div class="input-group col-md-12">
-                                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
+
+                                    <form method="post" action="busqueda.php">
+                                        <div class="input-group">
+                                        <input type="text" class="form-control" name="busqueda" placeholder="Buscar"/>
                                             <span class="input-group-btn">
-                                                <form method="post" action="busqueda.php">
-                                                    <button class="btn btn-info btn-lg" type="submit">
+                                                    <button class="btn btn-primary" type="submit">
                                                         <i class="glyphicon glyphicon-search"></i>
                                                     </button>
-                                                </form>
                                             </span>
-                                </div>
+                                        </div>
+                                    </form>
+
                             </div>
                         </div>
                     </div>
                     <!--INI: Boton Atras-->
                     <div class="row">
                         <div class="col-md-offset-3 col-md-6">
-                            <button class="btn btn-lg btn-primary" type="button" id="botonAtras" style="margin-top: 10px;">Atrás</button>
+                            <button class="btn btn-primary" type="button" id="botonAtras" style="margin-top: 10px;">
+                                Atrás
+                            </button>
                         </div>
                     </div>
                     <!--FIN: Boton Atras-->
@@ -72,16 +80,15 @@ if (login_check($mysqli) == true) {
 <!-- <div id="lema">¡Tus clases al mejor precio y cerca de tu casa!</div> -->
 <div class="container" style="position: absolute; bottom: 0; text-align: center; width: 100%; color: white;">
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-offset-3 col-sm-6">
             <p class="text-center text-inverse">© muveo.sytes.net 2015</p>
         </div>
-        <div class="col-sm-3"></div>
     </div>
 </div>
 
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -96,17 +103,20 @@ if (login_check($mysqli) == true) {
                 <form action="php/process_login.php" class="form-horizontal" method="post" name="login_form">
                     <div class="form-group">
                         <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
+
                         <div class="col-xs-6">
                             <input type="text" name="username" class="form-control" placeholder="Usuario">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-xs-4 control-label"> Contraseña </label>
+
                         <div class="col-xs-6">
                             <input type="password" name="password" class="form-control" placeholder="Contraseña">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">
+                    <button type="submit" class="btn btn-primary" value="Login"
+                            onclick="formhash(this.form, this.form.password);">
                         Iniciar sesión
                     </button>
                 </form>
@@ -128,18 +138,18 @@ if (login_check($mysqli) == true) {
 
 <!-- INI: slideUP-->
 <script>
-    $("#clases").click(function() {
-        $( "#clases" ).hide(400);
-        $( "#trabajo" ).hide(400, function()
-        {
+    $("#clases").click(function () {
+        $("#clases").hide(400);
+        $("#trabajo").hide(400, function () {
             document.getElementById("SearchBar").style.visibility = "visible";
         });
     });
-    $("#botonAtras").click(function() {
-        $( "#clases" ).show(400);
-        $( "#trabajo" ).show(400);
-        document.getElementById("SearchBar").style.visibility="hidden" ;
+    $("#botonAtras").click(function () {
+        $("#clases").show(400);
+        $("#trabajo").show(400);
+        document.getElementById("SearchBar").style.visibility = "hidden";
     });
-</script><!-- FIN: slideUP-->
+</script>
+<!-- FIN: slideUP-->
 </body>
 </html>

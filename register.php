@@ -8,7 +8,6 @@ include_once 'php/functions.php';
 
 <head>
     <?php include 'head.php'; ?>
-    <link href="css/formulario.css" rel="stylesheet">
     <link href="css/registro.css" rel="stylesheet">
     <title>Muveo - Registro</title>
 
@@ -26,8 +25,7 @@ if (!empty($error_msg)) {
 <!-- Header -->
 <?php include 'header.php'; ?>
 <!-- Header End-->
-        <!-- Header End-->
-        <div id="main-container" class="container">
+        <div class="container main-container">
             <div class="row">
                 <section>
                     <h2><strong>Registrar una cuenta</strong></h2>
@@ -35,13 +33,13 @@ if (!empty($error_msg)) {
                     <form class="form-horizontal" role="form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post" name="registration_form">
                         <h4>1. Datos de usuario</h4>
                         <div class="form-group">
-                            <label for="Nombre" class="col-sm-4 control-label">Nombre de usuario</label>
+                            <label for="Nombre" class="col-sm-2 control-label">Nombre de usuario</label>
                             <div class="col-sm-4">
-                                <input type='text' name='username' id='username' class="form-control" />
+                                <input type='text' name='username' id='username' class="form-control" placeholder="Nombre de usuario"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tipo" class="col-sm-4 control-label">Tipo de usuario</label>
+                            <label for="tipo" class="col-sm-2 control-label">Tipo de usuario</label>
                             <div id="tipo" class="col-sm-6">
                                 <input type="radio" name="tipo" id="tipo-Cont" value="Contratante" checked> Contratante
                                 <br>
@@ -51,31 +49,31 @@ if (!empty($error_msg)) {
                         <hr>
                         <h4>2. Datos personales</h4>
                         <div class="form-group">
-                            <label for="" class="col-sm-4 control-label">Nombre</label>
+                            <label for="" class="col-sm-2 control-label">Nombre</label>
                             <div class="col-sm-4">
-                                <input type='text' name='nombre' id='nombre' class="form-control" />
+                                <input type='text' name='nombre' id='nombre' class="form-control" placeholder="Nombre"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Apellidos" class="col-sm-4 control-label">Apellidos</label>
+                            <label for="Apellidos" class="col-sm-2 control-label">Apellidos</label>
                             <div class="col-sm-4">
-                                <input type='text' name='apellidos' id="apellidos" class="col-sm-6 form-control">
+                                <input type='text' name='apellidos' id="apellidos" class="col-sm-6 form-control" placeholder="Apellidos">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="col-sm-4 control-label">E-mail</label>
+                            <label for="email" class="col-sm-2 control-label">E-mail</label>
                             <div class="col-sm-4">
-                                <input type="email" name="email" id="email" class="col-sm-6 form-control"/>
+                                <input type="email" name="email" id="email" class="col-sm-6 form-control" placeholder="email@example.com"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tlf" class="col-sm-4 control-label">Teléfono</label>
+                            <label for="tlf" class="col-sm-2 control-label">Teléfono</label>
                             <div class="col-sm-2">
-                                <input type="tel" name="tlf" id="tlf" class="form-control">
+                                <input type="tel" name="tlf" id="tlf" class="form-control" placeholder="Numero">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="pais" class="col-sm-4 control-label">País</label>
+                            <label for="pais" class="col-sm-2 control-label">País</label>
                             <div class="col-sm-4">
                                 <select id="pais" name="pais" class="form-control">
                                     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
@@ -331,15 +329,16 @@ if (!empty($error_msg)) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Pass" class="col-sm-4 control-label">Contraseña</label>
+                            <label for="Pass" class="col-sm-2 control-label">Contraseña</label>
                             <div class="col-sm-4">
-                                <input type="password" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                             </div>
+                            <label id="passTooltip" style="display: none">La contraseña debe tener al menos 6 caracteres, 1 mayúscula y 1 número</label>
                         </div>
                         <div class="form-group">
-                            <label for="Conf-Pass" class="col-sm-4 control-label">Repetir contraseña</label>
+                            <label for="Conf-Pass" class="col-sm-2 control-label">Repetir contraseña</label>
                             <div class="col-sm-4">
-                                <input type="password" name="confirmpwd" id="confirmpwd" class="form-control">
+                                <input type="password" name="confirmpwd" id="confirmpwd" class="form-control" placeholder="Repetir contraseña">
                             </div>
                         </div>
                         <hr>
@@ -356,13 +355,11 @@ if (!empty($error_msg)) {
                 </section>
             </div>
         </div>
-    
-    <div id="footer">
+
         <!-- Footer -->
         <footer id="lema" class="">
             © muveo.sytes.net 2015
         </footer>
-    </div>
 
 
 
@@ -411,6 +408,19 @@ if (!empty($error_msg)) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+    $('#password').focus(function() {
+        $("#passTooltip").slideToggle("slow");
+    });
+    /*
+     $('#password').attr("data-toggle","tooltip");
+     $('#password').attr("data-placement","right");
+     $('#password').attr("title","La contraseña debe tener al menos 6 caracteres, 1 mayúscula y 1 número");
+     */
+    $('#password').blur(function(){
+        $("#passTooltip").slideToggle("slow");
+    });
+</script>
 
 </body>
 

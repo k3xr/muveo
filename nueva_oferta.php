@@ -23,7 +23,7 @@ if (login_check($mysqli) == true) {
 <!-- Header End-->
 
 <!-- Main container -->
-<div id="main-container" class="container">
+<div class="container main-container">
     <div class="row">
         <section>
             <h2 id="title">Creación de nuevo anuncio</h2>

@@ -1,0 +1,22 @@
+#PanelInicio {
+    color: white;
+    text-shadow: 0px 1px 1px #222;
+    font-weight: bolder;
+    font-size: larger;
+    text-align: center;
+}
+#container-full{
+    overflow: hidden;
+    width: 100%;
+    padding-top: 10%;
+}
+#loginModal{
+    text-align: center;
+}
+#trabajo,#botonAtras,#clases {
+    width: 40%;
+    margin: 5px;
+}
+#SearchBar{
+    visibility: hidden;
+}
