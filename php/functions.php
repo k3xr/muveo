@@ -226,4 +226,10 @@ function matching($word, $mysqli){
     return false;
 }
 
+function crear_contrato($idUsuario,$idOferta,$mysqli){
+    $date = date("YY-MM-DD");
+    $mysqli->query('INSERT INTO Contrato (idUsuario, idOferta, fechaContratacion, valoracion) VALUES
+                      ('.$idUsuario.', '.$idOferta.', '.$date.', 0)');
+}
+
 ?>

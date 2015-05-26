@@ -1,5 +1,5 @@
 <?php
-include_once 'php/db_connect.php';
+include_once 'php/nueva_oferta.inc.php';
 include_once 'php/functions.php';
 
 sec_session_start();
@@ -28,20 +28,20 @@ if (login_check($mysqli) == true) {
         <section>
             <h2 id="title">Creación de nuevo anuncio</h2>
             <hr>
-            <form role="form" class="form-horizontal"> <!-- Makes form-groups behave as rows of Bootstrap Grid System -->
+            <form role="form" enctype="multipart/form-data" class="form-horizontal" action="nueva_oferta.php?id=<?php echo $_SESSION['user_id'] ?>" method="post" name="nueva_oferta_form"> <!-- Makes form-groups behave as rows of Bootstrap Grid System -->
                 <h4> 1. Información general </h4>
                 <!-- Title -->
                 <div class="form-group">
                     <label for="titulo" class="col-sm-2 control-label">Titulo*</label>
                     <div class="col-sm-7">
-                        <input id="titulo" class="col-sm-4 form-control" placeholder="Titulo del anuncio" required>
+                        <input id="titulo" name='titulo' class="col-sm-4 form-control" placeholder="Titulo del anuncio" required>
                     </div>
                 </div>
                 <!-- Topic -->
                 <div class="form-group">
                     <label for="categoria" class="col-sm-2 control-label">Categoría</label>
                     <div class="col-sm-7">
-                        <select id="categoria" class="col-sm-4 form-control">
+                        <select id="categoria" name='categoria' class="col-sm-4 form-control">
                             <option value="other">Sin especificar</option>
                             <option value="web_programming">Programación Web</option>
                             <option value="web_design">Diseño Web</option>
@@ -57,7 +57,7 @@ if (login_check($mysqli) == true) {
                 <div class="form-group">
                     <label for="descripcion" class="col-sm-2 control-label">Descripcion</label>
                     <div class="col-sm-8">
-                        <textarea id="descripcion" class="col-sm-6 form-control" rows="8" placeholder="Añade aquí la descripción del anuncio."></textarea>
+                        <textarea id="descripcion" name='descripcion' class="col-sm-6 form-control" rows="8" placeholder="Añade aquí la descripción del anuncio."></textarea>
                     </div>
                 </div>
                 <!-- Portada -->
@@ -77,7 +77,7 @@ if (login_check($mysqli) == true) {
                             Precio*
                         </label>
                         <div class="col-sm-4">
-                            <input id="precio" type="text" class="form-control">
+                            <input id="precio" name="precio" type="text" class="form-control">
                             &nbsp;€/hora
                             <!-- Tasa -->
                             <!--<select id="precio_tiempo" class="form-control">

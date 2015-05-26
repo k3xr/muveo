@@ -7,7 +7,7 @@
  */
 
 echo '<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="ofertas de clases"/>
     <meta charset="keywords" content="clases"/>
@@ -21,3 +21,5 @@ echo '<meta charset="utf-8">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <!--[endif]-->';
+
+/* <meta http-equiv="X-UA-Compatible" content="IE=edge"> */

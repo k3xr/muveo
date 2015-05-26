@@ -53,7 +53,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
                 <span id="rating">
                     <h5 style="margin-bottom:5px"> <strong>Valoración:</strong></h5>
                     <?php //Valoracion oferta
-                        printf('<span class="valoracion val-%d"></span>', $oferta['valoracion']);
+                        printf('<span class="valoracion val-%d"></span>', $oferta['valoracion']*10);
                     ?>
                     <!--
                     <span class="glyphicon glyphicon-star estrella"></span>
@@ -90,11 +90,22 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
         <!-- Overview de la oferta -->
         <!-- Datos de la oferta -->
         <section id="datos-oferta" class="col-lg-8">
-            <button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+            <?php
+            if (login_check($mysqli) == true) {
+                echo '<button id="btn-contratar" class="btn btn-primary">
                     <span class="glyphicon glyphicon-hand-right">
                     </span>
                 Contratar
-            </button>
+            </button>';
+            }
+            else{
+                echo '<button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                    <span class="glyphicon glyphicon-hand-right">
+                    </span>
+                Contratar
+            </button>';
+            }
+            ?>
             <h4> Especificaciones de la oferta</h4>
             <hr>
             <ul class="list-unstyled">

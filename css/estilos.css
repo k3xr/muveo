@@ -1,6 +1,8 @@
 body{
     margin-top: 70px;
+/*    background-image: url("/images/texture_1.jpg");*/
     background-image: url("/images/backgroundIndex.jpg");
+/*    background-color: grey;*/
     margin-bottom: 70px;
 }
 section{
@@ -102,10 +104,6 @@ button{
     margin-right: 5px;
 }
 
-.dropdown-toggle{
-    padding: 10px 0px 0px 0px; !important;
-}
-
 span.rating{
     padding: 6px 12px 6px 12px;
     color: white;
@@ -171,4 +169,7 @@ span.rating{
 /* Miscelaneo */
 *[hidden]{
     display: none;
+}
+#main-carousel {
+    text-shadow: 0px 1px 1px #222 !important;
 }

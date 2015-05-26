@@ -63,7 +63,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
         <div class="col-md-8" id="overview">
             <h4>Valoración: <span class="rating"><?php printf('%d',$user['valoracion'])?></span></h4>
             <div id="rating">
-                <span class="valoracion val-<?php printf("%d",$user['valoracion'])?>"></span>
+                <span class="valoracion val-<?php printf("%d",$user['valoracion']*10)?>"></span>
             </div>
             <h4>Nacionalidad:</h4>
             <?php
@@ -90,7 +90,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
         ?>
         <div class="col-lg-12" id="ofertas">
             <?php
-            if($user['tipoUsuario']==1){
+            if($user['tipoUsuario']==1){//Ofertante
                 if($user['nbUsuario']==$_SESSION['username']){
                     printf("
                     <a href=\"nueva_oferta.php\">
@@ -101,15 +101,22 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
                 }
                 echo '<h3>Ofertas realizadas</h3>';
             }
-            else{
+            else{//Contratante
                 echo '<h3>Ofertas contratadas</h3>';
             }
             ?>
             <hr/>
             <ul class="list-group" >
                 <?php
-                foreach($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=".$user['idUsuario'])as $oferta) {
-                    printf('<a href="oferta.php?id=%d"><li class="list-group-item">%s</li></a>', $oferta['idOferta'], $oferta['titulo']);
+                if($user['tipoUsuario']==1) {//Ofertante
+                    foreach ($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=" . $user['idUsuario']) as $oferta) {
+                        printf('<a href="oferta.php?id=%d"><li class="list-group-item">%s</li></a>', $oferta['idOferta'], $oferta['titulo']);
+                    }
+                }
+                else{//Contratante
+                    foreach ($mysqli->query("SELECT * FROM Oferta, Contrato WHERE Oferta.idOferta=Contrato.idOferta and Contrato.idUsuario=" . $user['idUsuario']) as $oferta) {
+                        printf('<a href="oferta.php?id=%d"><li class="list-group-item">%s</li></a>', $oferta['idOferta'], $oferta['titulo']);
+                    }
                 }
                 ?>
             </ul>
