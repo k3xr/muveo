@@ -19,11 +19,12 @@ sec_session_start();
 <?php include 'header.php'; ?>
 <!-- Header End-->
 
-<div class="container main-container">
+<div class="container main-container well">
     <div class="row">
         <!-- sidebar -->
         <aside class="col-xs-12 col-md-3" id="sidebar" role="navigation">
             <h4><strong>Filtros de búsqueda</strong></h4>
+            <hr>
             <?php
             //Mantener el estado de los filtros
             //Siempre van a estar todos cuando aplicamos filtros -> comprobamos 1
@@ -41,6 +42,7 @@ sec_session_start();
             echo '<form class="form-horizontal" method="post" action="busqueda.php">
                 <div class="form-group">
                     <label for="" class="control-label">Precio</label>
+                    &nbsp;
                     <input id="ex2" type="text" class="col-lg-2 span2" value="Precio" data-slider-min="5.0"
                            data-slider-max="100.0" data-slider-step="0.5" data-slider-value="[' . $precioFiltro . ']"
                            name="precio"/>
@@ -48,24 +50,24 @@ sec_session_start();
                 </div>
                 <div class="form-group">
                     <label for="" class="control-label">Valoración</label>
+                    &nbsp;
                     <input id="ex10" type="text" data-slider-max="5.0" data-slider-handle="custom" value=""
                            name="comentarios" data-slider-value="' . $comentariosFiltro . '"/>
                 </div>
                 <div class="form-group">
                     <label for="categoria" class="control-label">Categoría</label>
-                    <select id="categoria" class="col-sm-4 form-control input-sm" name="categoria">
-                        <option id="other" value="other">Sin especificar</option>
-                        <option id="web_programming" value="web_programming">Programación Web</option>
-                        <option id="web_design" value="web_design">Diseño Web</option>
-                        <option id="inteligencia_empresarial" value="inteligencia_empresarial">Inteligencia Empresarial</option>
-                        <option id="abogacia" value="abogacia">Abogacia</option>
-                        <option id="clases" value="clases">Clases particulares</option>
-                        <option id="analisis_datos" value="analisis_datos">Análisis de datos</option>
-                        <option id="diseno_grafico" value="diseno_grafico">Diseño Gráfico</option>
+                    <br>
+                    <select id="categoria" class="col-sm-4 form-control input-sm" name="categoria">';
+
+            $oferta['categoria'] = $_POST['categoria'];
+            getCategorias($oferta['categoria']);
+
+            echo '
+
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="busqueda" value="'.$_POST["busqueda"].'" />
+                    <input type="hidden" name="busqueda" value="' . $_POST["busqueda"] . '" />
                 </div>
                 <button type="submit" class="btn btn-primary" value="Login">
                     Aplicar Filtros
@@ -80,16 +82,25 @@ sec_session_start();
                 <h4><strong>Barra de búsqueda</strong></h4>
 
                 <div class="input-group col-lg-12">
-                    <input type="text" name="busqueda" class="col-lg-4 form-control"
+                    <input type="text" name="busqueda" class="col-lg-4 form-control input-sm"
                            placeholder="Busca algún tema o actividad que te interese."/>
                    <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">
+                    <button id="buscarbtn" class="btn btn-default" type="submit">
                         <i class="glyphicon glyphicon-search"></i>Buscar
                     </button>
                    </span>
                 </div>
             </form>
             <!-- search bar -->
+            <!-- Filter By -->
+            <form id="filterBy" class="form-horizontal" method="post" action="busqueda.php">
+                    <label class="filter-col" for="pref-orderby">Ordernar por:</label>
+                    <input name="pref-orderby" type="submit" class="btn btn-default" value="Precio descendente">
+                    </input>
+            </form>
+            <!-- form group [order by] -->
+            <!-- Filter By -->
+            <!-- Results -->
             <div class="panel panel-info">
                 <!-- Default panel contents -->
                 <div class="panel-heading"><strong>Resultados de la búsqueda</strong></div>
@@ -97,44 +108,65 @@ sec_session_start();
                 <ul class="list-group">
                     <?php
 
+                    //Arreglando paginacion con filtros
+                    if (isset($_POST['busqueda'])) {
+                        $_SESSION["busqueda"] = $_POST['busqueda'];
+
+                    } else if (isset($_SESSION["busqueda"])) {
+                        $_POST['busqueda'] = $_SESSION["busqueda"];
+                    }
                     //INI: Caso de busqueda con searchBar
                     $arrayOfertasAMostrar = null;
-                    if (isset($_POST['busqueda']) && $_POST['busqueda'] != "") {
+                    if (isset($_POST['busqueda']) && isset($_POST['precio'])) {
+                        $arrayOfertasAMostrar = matching($_POST['busqueda'], $mysqli);
+                        $arrayOfertasAMostrar = ' idOferta IN (' .
+                            implode(',', array_map('intval', $arrayOfertasAMostrar)) . ') AND';
+                    } else if (isset($_POST['busqueda'])) {
                         $arrayOfertasAMostrar = matching($_POST['busqueda'], $mysqli);
                         $arrayOfertasAMostrar = ' idOferta IN (' .
                             implode(',', array_map('intval', $arrayOfertasAMostrar)) . ')';
                     }
-
-                    /*if (isset($_POST['comentario'])) {
-                        $arrayOfertasAMostrar = matching($_POST['busqueda'], $mysqli);
-                        $arrayOfertasAMostrar = ' idOferta IN (' .
-                            implode(',', array_map('intval', $arrayOfertasAMostrar)) . ')';
-                    }*/
                     //FIN: Caso de busqueda
-
                     //INI: Filtros
                     //Para pruebas
                     //$_POST['precio'] = "10,100";
-                   //$_POST['comentarios'] = "0";
-                    //$_POST['categoria'] = "other";
+                    //$_POST['comentarios'] = "0";
+                    //$_POST['categoria'] = "Sin especificar";
                     $rango_precio = explode(",", $_POST['precio']);
                     $_POST['comentarios'] = (is_numeric($_POST['comentarios']) ? (int)$_POST['comentarios'] : 0);
                     if (isset($_POST['precio']) && isset($_POST['comentarios']) && isset($_POST['categoria'])) {
-                        if($_POST['categoria'] != "other"){
+                        if ($_POST['categoria'] != "Sin especificar") {
                             $arrayOfertasAMostrar = $arrayOfertasAMostrar . " precio BETWEEN "
                                 . $rango_precio[0] . " AND " . $rango_precio[1] . " AND valoracion >= " .
                                 $_POST['comentarios'] . " AND categoria=\"" . $_POST['categoria'] . "\"";
-                        }else{
+                        } else {
                             $arrayOfertasAMostrar = $arrayOfertasAMostrar . " precio BETWEEN "
                                 . $rango_precio[0] . " AND " . $rango_precio[1] . " AND valoracion >= " .
                                 $_POST['comentarios'] . "";
                         }
+                        //FIN: Filtros
                     }
-                    //FIN: Filtros
 
+                    //En caso de que estemos usando la paginacion el metodo nos obliga a usar la misma query
+                    if(isset($_GET['_pno'])){
+                        $arrayOfertasAMostrar = $_SESSION['queryCompleta'];
+                        if(isset($_POST['pref-orderby'])){
+                            $arrayOfertasAMostrar = $arrayOfertasAMostrar." ORDER BY precio DESC";
+                        }
+                    }
+
+                    //Tenemos en cuenta si se desea ordenar los resultados
+                    if(isset($_POST['pref-orderby'])){
+                        $arrayOfertasAMostrar = $arrayOfertasAMostrar." ORDER BY precio DESC";
+                    }
 
                     $posts = $db_try->getRowsWithPaging('Oferta',
                         $_GET['_pno'], $_SERVER['PHP_SELF'], $arrayOfertasAMostrar, null, null, null, 5);
+
+                    //Guardamos la query para poder reutilizarla en caso de usar paginacion
+                    if(!isset($_GET['_pno'])){
+                        $_SESSION['queryCompleta'] = $arrayOfertasAMostrar;
+                    }
 
                     if (isset($posts) && $posts->isAnyDataAvailable()) {
                         $postsdata = $posts->get();
@@ -212,6 +244,7 @@ sec_session_start();
     $("#ex10").slider({});
 
     $('#<?=$_POST['categoria']?>').prop('selected', true);
+
 
 </script>
 

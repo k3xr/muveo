@@ -10,7 +10,7 @@ if (isset($_POST['username'], $_POST['p'])) {
 
     if (login($username, $password, $mysqli) == true) {
         // Login success
-        header('Location: ../perfil.php?id='.$_SESSION['user_id']);
+        header('Location: '.$_SERVER['HTTP_REFERER']);
     } else {
         // Login failed
         header('Location: ../'.$_SERVER['SCRIPT_URI'].'?error=1');

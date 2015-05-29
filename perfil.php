@@ -7,7 +7,7 @@ sec_session_start();
 if(isset($_GET['id'])){
     $id=$_GET['id'];
 }
-foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $user);
+$user = getUser($id,$mysqli);
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
     <?php include 'header.php'; ?>
 </div>
 <!-- Header End-->
-<div class="container main-container">
+<div class="container main-container well">
     <h2>
         <?php
         if($user['nbUsuario']==$_SESSION['username']){
@@ -46,8 +46,8 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
         ?>
     </h2>
     <hr>
-    <div class="row">
-        <aside class="col-md-3">
+    <div class="row well" id="overview">
+        <aside class="col-md-3" >
             <img id="avatar" src="<?php printf("%s",$user['avatarPath'])?>" class="img-responsive img-rounded">
             <?php
             if($user['nbUsuario']==$_SESSION['username']){
@@ -60,11 +60,19 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
             }
             ?>
         </aside>
-        <div class="col-md-8" id="overview">
-            <h4>Valoración: <span class="rating"><?php printf('%d',$user['valoracion'])?></span></h4>
+        <div class="col-md-8">
+            <h4>Nombre de usuario: </h4>
+            <?php printf('%s',$user['nbUsuario'])?>
+            <?php
+            if($user['tipoUsuario']==1){
+              echo'
+            <h4>Valoración: <span class="rating">'.$user['valoracion'].'</span></h4>
             <div id="rating">
-                <span class="valoracion val-<?php printf("%d",$user['valoracion']*10)?>"></span>
+                <span class="valoracion val-'.($user['valoracion']*10).'"></span>
             </div>
+            ';
+            }
+            ?>
             <h4>Nacionalidad:</h4>
             <?php
             printf("%s",$user['nacionalidad'])
@@ -94,7 +102,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
                 if($user['nbUsuario']==$_SESSION['username']){
                     printf("
                     <a href=\"nueva_oferta.php\">
-                        <button class=\"btn btn-primary glyphicon glyphicon-plus-sign btn-add\"></button>
+                        <button class=\"btn btn-primary btn-add\">Crear nueva oferta</button>
                     </a>
                     ");
 
@@ -106,27 +114,99 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
             }
             ?>
             <hr/>
-            <ul class="list-group" >
+<!--            <ul class="list-group" >-->
+              <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
                 <?php
                 if($user['tipoUsuario']==1) {//Ofertante
-                    foreach ($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=" . $user['idUsuario']) as $oferta) {
-                        printf('<a href="oferta.php?id=%d"><li class="list-group-item">%s</li></a>', $oferta['idOferta'], $oferta['titulo']);
+                    $array = getOfertadas($user['idUsuario'], $mysqli);
+                    $i = 0;
+                    foreach ($array as $oferta) {
+                      $datosOferta = getOferta($oferta['idOferta'], $mysqli);
+                      echo
+                      '
+                      <div class="panel panel-default">
+                      ';
+                      printf('<div class="panel-heading" role="tab" id="heading%d">',$i);
+                      echo '<h4 class="panel-title">';
+                      printf('<a data-toggle="collapse"
+                                  data-parent="#acordeon"
+                                  href="#collapse%d"
+                                  aria-expanded="false"
+                                  aria-controls="collapse%d">
+                                  %s</a>', $i,$i, $oferta['titulo']);
+                      echo
+                      '
+                          </h4>
+                          <label class="label label-info" id="categoria" for=""><span>'.$datosOferta['categoria'].'</span></label>
+                        </div>
+
+                      ';
+                      printf('<div id="collapse%d" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading%d">',$i,$i);
+                      echo
+                      '
+                        <div class="panel-body">
+                        ';
+                      printf('<h4>Descripción</h4><small>%s</small><br><br>',$oferta['descripcion']);
+                      printf('<a class="btn btn-default" href="oferta.php?id=%d">Ver detalle</a>',$oferta['idOferta']);
+                      if($user['idUsuario'] == $_SESSION['user_id']){
+                        printf('<a class="btn btn-primary" href="editar_oferta.php?id=%d">Editar oferta</a>',$oferta['idOferta']);
+                      }
+                      echo
+                      '
+                        </div>
+                      </div>
+                      </div>
+                      ';
+                      $i++;
                     }
                 }
                 else{//Contratante
-                    foreach ($mysqli->query("SELECT * FROM Oferta, Contrato WHERE Oferta.idOferta=Contrato.idOferta and Contrato.idUsuario=" . $user['idUsuario']) as $oferta) {
-                        printf('<a href="oferta.php?id=%d"><li class="list-group-item">%s</li></a>', $oferta['idOferta'], $oferta['titulo']);
+                    $array = getContratadas($user['idUsuario'], $mysqli);
+                    foreach ($array as $oferta) {
+                      $datosOferta = getOferta($oferta['idOferta'], $mysqli);
+//                      $anunciante = getAnunciante($oferta['idOferta'], $mysqli);
+                      echo
+                      '
+                      <div class="panel panel-default">
+                      ';
+                      printf('<div class="panel-heading" role="tab" id="heading%d">',$i);
+                      echo '<h4 class="panel-title">';
+                      printf('<a data-toggle="collapse"
+                                  data-parent="#acordeon"
+                                  href="#collapse%d"
+                                  aria-expanded="false"
+                                  aria-controls="collapse%d">
+                                  %s</a>', $i,$i, $oferta['titulo']);
+                      echo
+                      '
+                          </h4>
+                          <label class="label label-info" id="categoria" for=""><span>'.$datosOferta['categoria'].'</span></label>
+                        </div>
+
+                      ';
+                      printf('<div id="collapse%d" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading%d">',$i,$i);
+                      echo
+                      '
+                        <div class="panel-body">
+                        ';
+                      printf('<h4>Descripción</h4><small>%s</small><br><br>',$oferta['descripcion']);
+                      printf('<a class="btn btn-default" href="oferta.php?id=%d">Ver detalle</a>', $oferta['idOferta']);
+                      echo
+                      '
+                        </div>
+                      </div>
+                      </div>
+                      ';
+                      $i++;
                     }
                 }
                 ?>
-            </ul>
+<!--            </ul>-->
+              </div>
         </div>
     </div>
 </div>
 <!-- Footer -->
-<footer id="lema" class="">
-    © muveo.sytes.net 2015
-</footer>
 
 <!-- Modal para login -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
@@ -172,6 +252,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$id."\"")as $u
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+
 
 </body>
 

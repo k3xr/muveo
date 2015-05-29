@@ -27,14 +27,14 @@ function sec_session_start() {
 
 function login($username, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible.
-    if ($stmt = $mysqli->prepare("SELECT idUsuario, nbUsuario, password, salt, avatarPath
+    if ($stmt = $mysqli->prepare("SELECT idUsuario, nbUsuario, password, salt, avatarPath, tipoUsuario
                 FROM Usuario WHERE nbUsuario = ? LIMIT 1")) {
         $stmt->bind_param('s', $username);  // Bind "$username" to parameter.
         $stmt->execute();    // Execute the prepared query.
         $stmt->store_result();
 
         // get variables from result.
-        $stmt->bind_result($user_id, $username, $db_password, $salt, $avatar);
+        $stmt->bind_result($user_id, $username, $db_password, $salt, $avatar, $tipo);
         $stmt->fetch();
 
         // hash the password with the unique salt.
@@ -64,6 +64,7 @@ function login($username, $password, $mysqli) {
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', $password . $user_browser);
                     $_SESSION['avatar'] = $avatar;
+                    $_SESSION['tipo'] = $tipo;
                     // Login successful..
 
                     return true;
@@ -230,6 +231,116 @@ function crear_contrato($idUsuario,$idOferta,$mysqli){
     $date = date("YY-MM-DD");
     $mysqli->query('INSERT INTO Contrato (idUsuario, idOferta, fechaContratacion, valoracion) VALUES
                       ('.$idUsuario.', '.$idOferta.', '.$date.', 0)');
+}
+
+function getPaises($paischecked){
+    $array = explode("\n", file_get_contents('paises.txt'));
+    foreach($array as $pais){
+        $pais = substr($pais, 0, -1);
+        if(strcmp ($pais , $paischecked ) == 0){
+            printf("<option selected=\"selected\" value=\"%s\" title=\"%s\"> %s </option>",$pais,$pais,$pais);
+        }
+        else{
+            printf("<option value=\"%s\" title=\"%s\"> %s </option>",$pais,$pais,$pais);
+        }
+    }
+}
+
+function getProvincias($provincia){
+    $array = explode("\n", file_get_contents('provincias.txt'));
+    foreach($array as $prov){
+        $prov = substr($prov, 0, -1);
+        if(strcmp ($prov , $provincia ) == 0){
+            printf("<option selected=\"selected\" value=\"%s\" title=\"%s\"> %s </option>",$prov,$prov,$prov);
+        }
+        else{
+            printf("<option value=\"%s\" title=\"%s\"> %s </option>",$prov,$prov,$prov);
+        }
+    }
+}
+
+function getCategorias($default){
+    $array = explode("\n", file_get_contents('categorias.txt'));
+    foreach($array as $categoria){
+        $categoria = substr($categoria, 0, -1);
+        if(strcmp ($categoria , $default ) == 0){
+            printf("<option id=\"%s\" selected=\"selected\" value=\"%s\" title=\"%s\"> %s </option>",$categoria,$categoria,$categoria,$categoria);
+        }
+        else{
+            printf("<option id=\"%s\" value=\"%s\" title=\"%s\"> %s </option>",$categoria,$categoria,$categoria,$categoria);
+        }
+    }
+}
+
+function getUser($id, $mysqli){
+    foreach ($mysqli->query('SELECT * FROM Usuario WHERE idUsuario=' . $id) as $user) ;
+    return $user;
+}
+
+function getOferta($id, $mysqli){
+    foreach($mysqli->query('SELECT * FROM Oferta WHERE idOferta=' . $id) as $oferta);
+    return $oferta;
+}
+
+function getOfertadas($id, $mysqli){
+    $array = array();
+    foreach ($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=" . $id) as $oferta){
+        array_push($array, $oferta);
+    }
+    return $array;
+}
+
+function getContratadas($id, $mysqli){
+    $array = array();
+    foreach ($mysqli->query("SELECT * FROM Oferta, Contrato WHERE Oferta.idOferta=Contrato.idOferta and Contrato.idUsuario=" . $id) as $oferta){
+        array_push($array, $oferta);
+    }
+    return $array;
+}
+
+function getAnunciante($idOferta, $mysqli){
+  $array = array();
+  foreach ($mysqli->query("SELECT * FROM Usuario, Oferta WHERE Usuario.idUsuario=Oferta.idOfertante and Oferta.idOferta=" . $idOferta) as $anunciante){
+    array_push($array, $anunciante);
+  }
+  return $array;
+}
+
+function valorar($idOferta, $idUsuario, $valoracion, $mysqli){
+    $mysqli->query('Update Contrato set valoracion='.$valoracion.' where idUsuario='.$idUsuario.' and idOferta='.$idOferta);
+    actualizarValOferta($idOferta,$mysqli);
+    actualizarValUsuario($idUsuario,$mysqli);
+}
+
+function actualizarValOferta($idOferta, $mysqli){
+    $total=0;
+    $count=0;
+    foreach ($mysqli->query("SELECT * FROM Contrato WHERE idOferta=" . $idOferta) as $contrato){
+        $total += $contrato['valoracion'];
+        $count++;
+    }
+    $total = $total/$count;
+    $mysqli->query('Update Oferta set valoracion='.$total.' where idOferta='.$idOferta);
+}
+
+function actualizarValUsuario($idUsuario, $mysqli){
+    $total=0;
+    $count=0;
+    foreach ($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=" . $idUsuario) as $oferta){
+        $total += $oferta['valoracion'];
+        $count++;
+    }
+    $total = $total/$count;
+    $mysqli->query('Update Usuario set valoracion='.$total.' where idUsuario='.$idUsuario);
+}
+
+function tieneContrato($user, $oferta, $mysqli){
+    $count=0;
+    foreach ($mysqli->query('SELECT * FROM Contrato WHERE idUsuario=' . $user . ' and idOferta='.$oferta) as $contrato){
+        $count++;
+    }
+    if($count>0)return true;
+    else return false;
 }
 
 ?>

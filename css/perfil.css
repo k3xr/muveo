@@ -8,12 +8,17 @@
 
 #overview{
 /*    border: 1px solid #000000;*/
-    border-radius: 5px;
+    border-radius: 1px;
     border: solid 1px #BCE8F1;
     color: #31708F;
     padding-top: 10px;
     background-color:#D9EDF7;
     margin-top: 20px;
+    font-size: 13px;
+}
+
+#overview h4 {
+    font-weight: bold;
 }
 
 #ofertas{
@@ -21,7 +26,7 @@
     border-radius: 5px;
 /*    margin: 10px;*/
     background-color: #ffffff;
-    float: right;
+    /*float: right;*/
 }
 
 #conocimientos{
@@ -34,6 +39,7 @@
     width: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     max-width: 200px;
+    margin-top: 10px;
 }
 
 aside{
@@ -54,6 +60,10 @@ hr{
     /*margin: 10px;*/
 }
 
+div.panel .btn{
+    margin-right: 5px;
+}
+
 /*
 li{
     padding-bottom: 5px;
@@ -62,4 +72,13 @@ li{
 */
 a{
     color: #000000;
+}
+
+div.panel-heading{
+    background-color: #D9EDF7 !important;
+}
+
+h4.panel-title > a{
+    color:#31708F;
+    font-weight: bold;
 }

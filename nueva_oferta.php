@@ -1,4 +1,5 @@
 <?php
+
 include_once 'php/nueva_oferta.inc.php';
 include_once 'php/functions.php';
 
@@ -42,14 +43,9 @@ if (login_check($mysqli) == true) {
                     <label for="categoria" class="col-sm-2 control-label">Categoría</label>
                     <div class="col-sm-7">
                         <select id="categoria" name='categoria' class="col-sm-4 form-control">
-                            <option value="other">Sin especificar</option>
-                            <option value="web_programming">Programación Web</option>
-                            <option value="web_design">Diseño Web</option>
-                            <option value="inteligencia_empresarial">Inteligencia Empresarial</option>
-                            <option value="abogacia">Abogacia</option>
-                            <option value="clases">Clases particulares</option>
-                            <option value="analisis_datos">Análisis de datos</option>
-                            <option value="diseno_grafico">Diseño Gráfico</option>
+                            <?php
+                            getCategorias('Sin especificar');
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -65,7 +61,7 @@ if (login_check($mysqli) == true) {
                     <label for="imagenOferta" class="col-sm-2 control-label">Portada</label>
                     <div class="col-sm-8">
                         <input id="imagenOferta" type="file" name="imagenOferta"/>
-                        <p class="help-block">Añade una imagen de portada para tu anuncio. Archivos soportados: <strong>.jpg, .jpge, .gif, .png</strong></p>
+                        <p class="help-block">Añade una imagen de portada para tu anuncio. Tamaño máximo 720 x 720. Archivos soportados: <strong>.jpg, .jpge, .gif, .png</strong></p>
                     </div>
                 </div>
                 <hr>
@@ -109,66 +105,16 @@ if (login_check($mysqli) == true) {
                     <label class="col-sm-2 control-label">Provincia*</label>
                     <div class="col-sm-3">
                         <select name="provincia" class="form-control" required>
-                            <option value='1'>Seleccionar</option>
-                            <option value='2'>Álava</option>
-                            <option value='3'>Albacete</option>
-                            <option value='4'>Alicante/Alacant</option>
-                            <option value='5'>Almería</option>
-                            <option value='6'>Asturias</option>
-                            <option value='7'>Ávila</option>
-                            <option value='8'>Badajoz</option>
-                            <option value='9'>Barcelona</option>
-                            <option value='10'>Burgos</option>
-                            <option value='11'>Cáceres</option>
-                            <option value='12'>Cádiz</option>
-                            <option value='13'>Cantabria</option>
-                            <option value='14'>Castellón/Castelló</option>
-                            <option value='15'>Ceuta</option>
-                            <option value='16'>Ciudad Real</option>
-                            <option value='17'>Córdoba</option>
-                            <option value='18'>Cuenca</option>
-                            <option value='19'>Girona</option>
-                            <option value='20'>Las Palmas</option>
-                            <option value='21'>Granada</option>
-                            <option value='22'>Guadalajara</option>
-                            <option value='23'>Guipúzcoa</option>
-                            <option value='24'>Huelva</option>
-                            <option value='25'>Huesca</option>
-                            <option value='26'>Illes Balears</option>
-                            <option value='27'>Jaén</option>
-                            <option value='28'>A Coruña</option>
-                            <option value='29'>La Rioja</option>
-                            <option value='30'>León</option>
-                            <option value='31'>Lleida</option>
-                            <option value='32'>Lugo</option>
-                            <option value='33'>Madrid</option>
-                            <option value='34'>Málaga</option>
-                            <option value='35'>Melilla</option>
-                            <option value='36'>Murcia</option>
-                            <option value='37'>Navarra</option>
-                            <option value='38'>Ourense</option>
-                            <option value='39'>Palencia</option>
-                            <option value='40'>Pontevedra</option>
-                            <option value='41'>Salamanca</option>
-                            <option value='42'>Segovia</option>
-                            <option value='43'>Sevilla</option>
-                            <option value='44'>Soria</option>
-                            <option value='45'>Tarragona</option>
-                            <option value='46'>Santa Cruz de Tenerife</option>
-                            <option value='47'>Teruel</option>
-                            <option value='48'>Toledo</option>
-                            <option value='49'>Valencia/Valéncia</option>
-                            <option value='50'>Valladolid</option>
-                            <option value='51'>Vizcaya</option>
-                            <option value='52'>Zamora</option>
-                            <option value='53'>Zaragoza</option>
+                            <?php
+                            getProvincias('Madrid');
+                            ?>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="localizacion" class="col-sm-2 control-label">Localizacion</label>
                     <div class="col-sm-8">
-                        <input id="localizacion" class="col-sm-4 form-control" placeholder="Añade aquí la dirección donde se realizará el servicio">
+                        <input id="localizacion" name="localizacion" class="col-sm-4 form-control" placeholder="Añade aquí la dirección donde se realizará el servicio">
                     </div>
                 </div>
                 <hr>

@@ -1,9 +1,11 @@
 body{
     margin-top: 70px;
 /*    background-image: url("/images/texture_1.jpg");*/
-    background-image: url("/images/backgroundIndex.jpg");
-/*    background-color: grey;*/
+    /*background-image: url("/images/backgroundIndex.jpg");*/
+    /*background-color: #D9EDF7;*/
+    background-color: #f8f8f8;
     margin-bottom: 70px;
+    /*text-shadow: 1px 0px 1px #222;*/
 }
 section{
     left: auto;
@@ -19,21 +21,20 @@ footer{
     text-align: center;
     margin-top: 20px;
     height:50px;
-    bottom:0px;
-    left:0px;
-    right:0px;
+    bottom:0;
+    left:0;
+    right:0;
     padding: 10px;
-    margin-bottom:0px;
+    margin-bottom:0;
     color: black;
     background-color: #ffffff;
-    text-align: center;
     font-size: smaller;
     position: fixed;
 }
 
 hr {
-	/*margin-top: 10px;
-	margin-bottom: 10px;*/
+	/*margin-top: 10px;*/
+	/*margin-bottom: 10px;*/
 }
 
 section > p{
@@ -41,7 +42,7 @@ section > p{
 }
 
 .navbar-brand{
-    padding: 0px;
+    padding: 0;
 }
 nav {
     background-color: #ffffff !important;
@@ -51,8 +52,8 @@ nav {
     background-color: white;
     width: 85%;
     padding: 20px 50px 20px 50px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 100px #222;
+    border-radius: 1px;
+    /*box-shadow: 1px 1px 20px #222;*/
     min-width: 390px; /* Minimo para display en moviles */
 }
 
@@ -61,11 +62,23 @@ button{
     font-weight: bold;
 }
 .btn{
-    margin-top: 2px;
     font-size: 12px !important;
     text-align: center;
     font-weight: bold;
+    border: 0;
 }
+
+.btn-default{
+    background-color: #e7e7e7;
+    color: black;
+}
+
+.btn-default:hover{
+    background-color: grey;
+    color: white;
+    border: 0;
+}
+
 #boton-sesion{
     float: right;
 }
@@ -79,11 +92,11 @@ button{
 }
 .input-group-addon{
     background-color: white;
-    border: 0px solid;
+    border: 0 solid;
     margin-left: 3px;
 }
 .form-group{
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 /* Estilo de formularios */
 
@@ -106,13 +119,13 @@ button{
 
 span.rating{
     padding: 6px 12px 6px 12px;
-    color: white;
-    background-color: cornflowerblue;
+    color: slategrey;
+    background-color: #ffd700;
     border-radius: 5px;
     font-weight: bold;
     font-family: "Helvetica Neue", sans-serif;
     margin-left: 5px;
-    font-size: 14px;
+    font-size: 13px;
     position: relative;
     bottom: 3px;
 }
@@ -156,11 +169,11 @@ span.rating{
     font-size: 12px;;
 }
 
-.tag:hover{
-    background-color: grey;
-    color: white;
-    text-decoration: none;
-}
+/*.tag:hover{*/
+    /*background-color: grey;*/
+    /*color: white;*/
+    /*text-decoration: none;*/
+/*}*/
 
 .estrella {
     color: #ffd700;
@@ -170,6 +183,14 @@ span.rating{
 *[hidden]{
     display: none;
 }
-#main-carousel {
-    text-shadow: 0px 1px 1px #222 !important;
+
+.site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+.site-content {
+    flex: 1;
+}
+

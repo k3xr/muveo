@@ -5,47 +5,16 @@
 
 #sidebar{
 /*    background-color: cornflowerblue;*/
-    border: solid 1px #BCE8F1;
+    /*border: solid 1px #BCE8F1;*/
     color: #31708F;
 	background-color:#D9EDF7;
-    font-size: 13px;
+    /*font-size: 13px;*/
 	text-align: center;
     border-radius: 5px;
     padding: 0px 30px 10px 30px;
-    box-shadow: 0px 0px 1px #222;
+    /*box-shadow: 0px 0px 1px #222;*/
 }
-/* collapsed sidebar styles */
-@media screen and (max-width: 767px) {
-    .row-offcanvas {
-        position: relative;
-        -webkit-transition: all 0.25s ease-out;
-        -moz-transition: all 0.25s ease-out;
-        transition: all 0.25s ease-out;
-    }
-    .row-offcanvas-right
-    .sidebar-offcanvas {
-        right: -41.6%;
-    }
 
-    .row-offcanvas-left
-    .sidebar-offcanvas {
-        left: -41.6%;
-    }
-    .row-offcanvas-right.active {
-        right: 41.6%;
-    }
-    .row-offcanvas-left.active {
-        left: 41.6%;
-    }
-    .sidebar-offcanvas {
-        position: absolute;
-        top: 0;
-        width: 41.6%;
-    }
-    #sidebar {
-        padding-top:0;
-    }
-}
 #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;
@@ -83,6 +52,10 @@
     margin-top: 10px;
 }
 
+#buscarbtn{
+    padding-bottom: 7px !important;
+}
+
 .glyphicon { margin-right:5px;}
 .section-box h2 { margin-top:0px;}
 .section-box h2 a { font-size:15px; }
@@ -94,13 +67,11 @@
 
 .hireButton{
     text-align: center;
-    padding: 5px;
 }
 
 .list-group-item{
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 80px;
 }
 
 .panel-footer {
@@ -114,4 +85,21 @@
 
 #searchForm{
     margin: 10px 0px 10px 0px;
+}
+
+#sidebar hr {
+    border-color: #31708F;
+    margin: 0 auto;
+}
+
+#sidebar label{
+    margin-bottom: 3px;
+}
+
+#filterBy{
+    margin-bottom: 7px;
+}
+
+.label-info{
+    background-color: cornflowerblue;
 }

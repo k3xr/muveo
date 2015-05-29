@@ -7,8 +7,9 @@ sec_session_start();
 if(isset($_GET['id'])){
     $id=$_GET['id'];
 }
-foreach($mysqli->query("SELECT * FROM Oferta WHERE idOferta=\"".$id."\"")as $oferta);
-foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfertante']."\"")as $user);
+
+$oferta = getOferta($id,$mysqli);
+$user = getUser($oferta['idOfertante'],$mysqli);
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
 <div class="container main-container">
     <div class="row">
         <!-- Overview de la oferta  -->
-        <aside id="overview" class="col-lg-3">
+        <aside id="overview" class="col-lg-3 well">
             <div id=anuncio>
                 <h4><strong>
                         <?php //Titulo Oferta
@@ -40,20 +41,31 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
                     </span>
             </div>
             <div id="author">
+              <div class="media">
+                <div class="media-left media-middle">
                 <?php //Imagen Ofertante
-                    printf('<img id=im_perfil src="%s" class="img-responsive">',$user['avatarPath']);
-
-                    //Nombre Ofertante
-                    printf('<a href="perfil.php?id=%d"><h4><strong>'.$user['nombre'].' '.$user['apellidos'].'</strong></h4></a>', $user['idUsuario']);
-                ?>
-
+                    printf('<img id=im_perfil src="%s" class="img-responsive">',$user['avatarPath']); ?>
+                </div>
+                <div class="media-body">
+                <?php //Nombre Ofertante
+                  printf('<a href="perfil.php?id=%d"><h4><strong>'.$user['nombre'].' '.$user['apellidos'].'</strong></h4></a>', $user['idUsuario']);?>
+                </div>
+              </div>
                 <!--<h5> <em> Soy programadora </em> </h5> -->
             </div>
             <hr>
                 <span id="rating">
                     <h5 style="margin-bottom:5px"> <strong>Valoración:</strong></h5>
                     <?php //Valoracion oferta
-                        printf('<span class="valoracion val-%d"></span>', $oferta['valoracion']*10);
+                    $valorar=tieneContrato($_SESSION['user_id'], $oferta['idOferta'], $mysqli);
+                    $v = $oferta['valoracion'];
+                    if(!$v>0)$v=0;
+                    for($i=0; $i<5; $i++){
+                        if($valorar)echo ('<a href="/php/valorar.php?idOferta='.$oferta['idOferta'].'&idUsuario='.$_SESSION['user_id'].'&valoracion='.($i+1).'" >');
+                        if($v>$i) echo '<span class="glyphicon glyphicon-star"></span>';
+                        else echo '<span class="glyphicon glyphicon-star-empty"></span>';
+                        if($valorar)echo '</a>';
+                    }
                     ?>
                     <!--
                     <span class="glyphicon glyphicon-star estrella"></span>
@@ -92,11 +104,29 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
         <section id="datos-oferta" class="col-lg-8">
             <?php
             if (login_check($mysqli) == true) {
-                echo '<button id="btn-contratar" class="btn btn-primary">
+                if($_SESSION['tipo']==1){//Ofertante
+                    if($_SESSION['user_id']==$oferta['idOfertante']){//Editar oferta
+                        echo '<a href="editar_oferta.php?id='.$oferta['idOferta'].'">
+                            <button id="btn-contratar" class="btn btn-primary">Editar Oferta</button>
+                        </a>';
+                    }
+                }
+                else{//Contratante
+                    if(!tieneContrato($_SESSION['user_id'],$oferta['idOferta'],$mysqli)){
+                        echo '<a type="button" id="btn-contratar" href="/php/contratar.php?id='.$_SESSION['user_id'].'&idOferta='.$oferta['idOferta'].'" class="btn btn-primary">
                     <span class="glyphicon glyphicon-hand-right">
                     </span>
-                Contratar
-            </button>';
+                        Contratar
+                    </a>';
+                    }
+                    else{
+                        echo '<button disabled id="btn-contratar" class="btn btn-success">
+                    <span class="glyphicon glyphicon-hand-right">
+                    </span>
+                        Ya contratada
+                    </button>';
+                    }
+                }
             }
             else{
                 echo '<button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
@@ -106,7 +136,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
             </button>';
             }
             ?>
-            <h4> Especificaciones de la oferta</h4>
+            <h3> Especificaciones de la oferta</h3>
             <hr>
             <ul class="list-unstyled">
                 <li> <strong>Fecha de publicación: </strong><span>
@@ -121,7 +151,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
                     </span> </li>
                 <li> <strong>Precio: </strong><span>
                         <?php //Precio Oferta
-                        printf("%d €",$oferta['precio']);
+                        printf("%d€/hora",$oferta['precio']);
                         ?>
                     </span></li>
                 <li> <strong>Idioma: </strong><span>
@@ -157,7 +187,7 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
                         ?>
                     </span></li>
             </ul>
-            <h4> Descripción de la oferta</h4>
+            <h3> Descripción de la oferta</h3>
             <hr>
             <p>
                 <?php //Descripcion Oferta
@@ -170,9 +200,9 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
                  <div id="map"></div>
              </div>-->
             <div id="tag-list">
-                <h4>
+                <h3>
                     Temas relacionados
-                </h4>
+                </h3>
                 <hr>
                 <?php //Tags Oferta
                     foreach($mysqli->query("SELECT nombre FROM Etiqueta, EtiquetasOferta WHERE Etiqueta.idEtiqueta = EtiquetasOferta.idEtiqueta
@@ -225,11 +255,6 @@ foreach($mysqli->query("SELECT * FROM Usuario WHERE idUsuario=\"".$oferta['idOfe
     </div>
 </div>
 <!-- Modal para login -->
-
-<!-- Footer -->
-<footer id="lema" class="">
-    © muveo.sytes.net 2015
-</footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

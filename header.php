@@ -19,10 +19,16 @@ echo '<div class="container">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <link rel="shortcut icon" href="images/muveo_icon.svg">
-        <a class="navbar-brand" href="index.php"><img src="images/muveo_logo.svg"></a>
+        <link rel="shortcut icon" href="images/muveo_icon_black.png">
+        <a class="navbar-brand" href="index.php"><img src="images/muveo_logo_black.png"></a>
     </div>
-    <div class="navbar-collapse collapse" id="navbar-main">';
+    <div class="navbar-collapse collapse" id="navbar-main">
+        <form method="post" action="busqueda.php" class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" name="busqueda" class="form-control input-sm" placeholder="Buscar"/>
+        </div>
+            <button class="btn btn-default" type="submit">Explorar</button>
+        </form>';
 
 if (!login_check($mysqli)) {
 
@@ -31,12 +37,12 @@ if (!login_check($mysqli)) {
         <script type="text/JavaScript" src="js/forms.js"></script>
         <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
             <div class="form-group">
-                <input type="text" name="username" class="form-control" placeholder="Usuario">
+                <input type="text" name="username" class="form-control input-sm" placeholder="Usuario">
             </div>
             <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Contraseña">
+                <input type="password" name="password" class="form-control input-sm" placeholder="Contraseña">
             </div>
-            <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
+            <button type="submit" class="btn btn-default" value="Login" onclick="formhash(this.form, this.form.password);">Iniciar sesión</button>
         </form>
     </div>
 </div>
