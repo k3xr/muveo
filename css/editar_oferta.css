@@ -1,71 +1,3 @@
-body{
-    margin-top: 70px;
-/*    background-color: cornflowerblue;*/
-    background-image: url("/images/backgroundIndex.jpg");
-}
-section{
-    left: auto;
-    right: auto;
-    padding-top: 1%;
-    padding-bottom: 2%;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 5px;
-    font-size: smaller;
-    float: left;
-    margin-left: 10px;
-    /*border: 1px solid ;*/
-    /*border-color: #BCE8F1;*/
-    /*color: #31708F;*/
-    /*background-color:#D9EDF7;*/
-}
-footer{
-    text-align: center;
-    margin-top: 20px;
-    height:50px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    padding: 10px;
-    margin-bottom:0px;
-    color: black;
-    background-color: #ffffff;
-    text-align: center;
-    font-size: smaller;
-}
-.form-control{
-    font-size: 12px !important;
-}
-section div.form-group{
-    margin-bottom: 10px !important;
-}
-section *.form-control{
-    border-radius: 4px;
-}
-input.form-control, select.form-control{
-    height: 28px !important;
-}
-.input-group-addon{
-    background-color: white;
-    border: 0px solid;
-    margin-left: 3px;
-}
-.btn{
-    margin-top: 2px;
-    font-size: 12px !important;
-}
-
-#main-container {
-    background-color: white;
-    width: 75%;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    padding-left: 60px;
-    padding-right: 60px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 100px #222;
-}
-
 #temas {
     width: 230px;
     border-radius: 6px;
@@ -82,14 +14,14 @@ input.form-control, select.form-control{
     font-size: 11px;
 }
 
+section{
+    float: left;
+}
+
 #precio {
     width: 65px;
     text-align: right;
 }
-
-/*tr {
-    height: 5px !important;
-}*/
 
 #avatar {
     max-width: 175px;

@@ -15,6 +15,7 @@ echo '<meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!--Estilos-->
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/modal.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]-->

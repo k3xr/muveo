@@ -34,7 +34,7 @@ sec_session_start();
                 $categoriaFiltro = $_POST['categoria'];
             } else {//Primer acceso valores por defecto
                 $precioFiltro = "5.0,100.0";
-                $comentariosFiltro = "1";
+                $comentariosFiltro = "0";
                 $categoriaFiltro = "";
             }
 
@@ -128,10 +128,6 @@ sec_session_start();
                     }
                     //FIN: Caso de busqueda
                     //INI: Filtros
-                    //Para pruebas
-                    //$_POST['precio'] = "10,100";
-                    //$_POST['comentarios'] = "0";
-                    //$_POST['categoria'] = "Sin especificar";
                     $rango_precio = explode(",", $_POST['precio']);
                     $_POST['comentarios'] = (is_numeric($_POST['comentarios']) ? (int)$_POST['comentarios'] : 0);
                     if (isset($_POST['precio']) && isset($_POST['comentarios']) && isset($_POST['categoria'])) {
@@ -187,47 +183,7 @@ sec_session_start();
 </div>
 <!--/.container-->
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h3>Inicia sesión para continuar</h3>
-                <h5>¿No tienes cuenta? ¡Registrate <a href="register.php"> aquí</a> en menos de un minuto!</h5>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
-
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
-
-                        <div class="col-xs-6">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    Iniciar sesión
-                </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal para login -->
+<?php include 'modal.php'?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -236,16 +192,10 @@ sec_session_start();
 <script src="js/bootstrap-slider.js"></script>
 <script>
     $("#ex2").slider({});
-    $("#ex6").slider();
-    $("#ex6").on("slide", function (slideEvt) {
-        $("#ex6SliderVal").text(slideEvt.value);
-    });
+
     // With JQuery
     $("#ex10").slider({});
-
     $('#<?=$_POST['categoria']?>').prop('selected', true);
-
-
 </script>
 
 </body>

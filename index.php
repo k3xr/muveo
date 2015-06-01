@@ -130,8 +130,6 @@ if (login_check($mysqli) == true) {
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-
 <div id="main-content" class="container">
   <h2 style="text-align: center">Comentarios de nuestros usuarios sobre Muveo</h2>
   <div class="row well" style="background-color: #ffffff">
@@ -159,50 +157,12 @@ if (login_check($mysqli) == true) {
       </div>
     </div>
   </div>
-  <!-- <div id="lema">¡Tus clases al mejor precio y cerca de tu casa!</div> -->
   <p class="text-center text-inverse">© muveo.sytes.net 2015</p>
 </div>
-
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aira-hidden="true">
-          &times;
-        </button>
-        <h3>Inicia sesión para continuar</h3>
-        <h5>¿No tienes cuenta? ¡Registrate <a href="register.php"> aquí</a> en menos de un minuto!</h5>
-      </div>
-
-      <div class="modal-body">
-        <form action="php/process_login.php" class="form-horizontal" method="post" name="login_form">
-          <div class="form-group">
-            <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
-            <div class="col-xs-6">
-              <input type="text" name="username" class="form-control" placeholder="Usuario">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="col-xs-4 control-label"> Contraseña </label>
-            <div class="col-xs-6">
-              <input type="password" name="password" class="form-control" placeholder="Contraseña">
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" value="Login" onclick="formhash(this.form, this.form.password);">
-            Iniciar sesión
-          </button>
-        </form>
-      </div>
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-default" data-dismiss="modal">
-          Cerrar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<?php
+include 'modal.php';
+?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -213,18 +173,6 @@ if (login_check($mysqli) == true) {
   $('.carousel').carousel({
     interval: 15000
   })
-  /*    $("#clases").click(function() {
-   $( "#clases" ).hide(400);
-   $( "#trabajo" ).hide(400, function()
-   {
-   document.getElementById("SearchBar").style.visibility = "visible";
-   });
-   });
-   $("#botonAtras").click(function() {
-   $( "#clases" ).show(400);
-   $( "#trabajo" ).show(400);
-   document.getElementById("SearchBar").style.visibility="hidden" ;
-   });*/
 </script>
 </body>
 </html>

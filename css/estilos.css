@@ -194,3 +194,11 @@ span.rating{
     flex: 1;
 }
 
+#loginFail{
+    position: relative;
+    width: 360px;
+    /*z-index: 1;*/
+    left: -50%;
+    /*margin: 0 auto;*/
+    margin-top: 10px;
+}

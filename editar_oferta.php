@@ -11,7 +11,6 @@ if(isset($_GET['id'])){
 }
 $oferta = getOferta($id,$mysqli);
 $user = getUser($oferta['idOfertante'],$mysqli);
-foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
 
 ?>
 
@@ -25,7 +24,6 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
 
     <script type="text/JavaScript" src="js/sha512.js"></script>
     <script type="text/JavaScript" src="js/forms.js"></script>
-    <!--[endif]-->
 </head>
 
 <body>
@@ -33,7 +31,7 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
 <?php include 'header.php'; ?>
 <!-- Header End-->
 
-<div class="container-fluid main-container">
+<div class="container-fluid main-container well">
 		<div class="row">
 			<h2><strong>Editar oferta</strong></h2>
 			<hr>
@@ -52,7 +50,6 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
                     printf('<a href="perfil.php?id=%d"><h4><strong>'.$user['nombre'].' '.$user['apellidos'].'</strong></h4></a>', $user['idUsuario']);
 					?>
 					<div id="author">
-                <!--<h5> <em> Soy programadora </em> </h5> -->
             </div>
 					
                     <h5><strong>Contacto</strong></h5>
@@ -65,9 +62,6 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
 						?>
                     </span>
                     <h5><strong>Temas relacionados</strong></h5>
-                    <span class="tag"> HTML </span>
-                    <span class="tag"> CSS </span>
-                    <span class="tag"> JavaScript </span>
             </div>
 			<section class="col-md-8">
 				<form class="form-horizontal" enctype="multipart/form-data" role="form" action="<?php echo esc_url($_SERVER['PHP_SELF']); ?>" method="post">
@@ -118,13 +112,6 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
 							<div class="col-sm-4">
 								<input id="precio" type="text" name="precio" class="form-control" value="<?php echo($oferta['precio']);?>">
 								&nbsp;€/hora
-                                <!-- Tasa -->
-<!--                            <select id="precio_tiempo" class="form-control">
-                                    <option>Por hora</option>
-                                    <option>Por semana</option>
-                                    <option>Por mes</option>
-                                    <option>Total</option>
-                                </select>-->
 							</div>
 						</div>
 					</div>
@@ -182,7 +169,7 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
                                   </thead>
                                   <tbody id="tags">
 									<td id=tag+NUMEROTEMA> 
-										<input type="hidden" name="tag+NUMEROTEMA" value="<?php echo($etiquetas['nombre']);?>"> 
+										<input type="hidden" name="tag+NUMEROTEMA" value="">
 										<button type="button" class="deleteTag label label-danger">Eliminar</button> 
 									</td>
                                   </tbody>
@@ -190,19 +177,6 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
                             </div>
                         </div>
 					</div>
-                    <!--
-                    <code>
-                        Nota: Script PHP que genere las "rows" de la tabla con los temas ya añadidos, según la BBDD.
-                        Código a generar:
-                        &lt;td id=tag+NUMEROTEMA&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;input type="hidden" name="tag+NUMEROTEMA" value="tag.toLowerCase()"&gt;
-                        <br>
-                        &nbsp;&nbsp;&lt;button type="button" class="deleteTag label label-danger"&gt;Eliminar&lt;/button&gt;
-                        <br>
-                        &lt;/td&gt;
-                    </code>
-                    -->
                     <hr>
                     <?php
                         $_SESSION['idOferta']=$oferta['idOferta'];
@@ -214,14 +188,12 @@ foreach($mysqli->query("SELECT * FROM Etiqueta")as $etiquetas);
 			</section>
 		</div>
 	</div>
-	<!-- Footer -->
-	<footer id="lema" class="">
-        © muveo.sytes.net 2015
-	</footer>
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="js/bootstrap.min.js"></script>
+<script src="js/temas.js"></script>
 </body>
 
 </html>

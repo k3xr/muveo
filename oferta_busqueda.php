@@ -1,4 +1,5 @@
 <?php
+include_once 'php/functions.php';
 /**
  * Created by PhpStorm.
  * User: Marco
@@ -52,11 +53,30 @@ echo'
                   </div>
               </div>
           </div>';
-            if($_SESSION['tipo'] == 0){
-              echo '<div class="col-xs-12 col-md-2 section-box hireButton">
-                <a href="pasarela.php?id='.$_SESSION[user_id].'&idOferta='.$schl['idOferta'].'" class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span>Contratar</a>
-            </div>';
+            if($_SESSION['user_id']>0) {
+                if ($_SESSION['tipo'] == 0) {//Contratante
+                    if(!tieneContrato($_SESSION['user_id'],$schl['idOferta'],$mysqli)){
+                        echo '<div class="col-xs-12 col-md-2 section-box hireButton">
+                    <a href="pasarela.php?id=' . $_SESSION['user_id'] . '&idOferta=' . $schl['idOferta'] . '" class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span>Contratar</a>
+                </div>';
+                    }
+                    else{
+                        echo '<div class="col-xs-12 col-md-2 section-box hireButton">
+                        <button disabled id="btn-contratar" class="btn btn-success">
+                        Ya contratada
+                    </button>';
+                    }
+
+                }
             }
+                else{
+                  echo '<div class="col-xs-12 col-md-2 section-box hireButton">
+                        <button id="btn-contratar" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                        <span class="glyphicon glyphicon-hand-right">
+                        </span>
+                    Contratar
+                </button>';
+                }
     echo '</div>
         </div>
     </div>

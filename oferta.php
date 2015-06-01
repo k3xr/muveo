@@ -51,7 +51,6 @@ $user = getUser($oferta['idOfertante'],$mysqli);
                   printf('<a href="perfil.php?id=%d"><h4><strong>'.$user['nombre'].' '.$user['apellidos'].'</strong></h4></a>', $user['idUsuario']);?>
                 </div>
               </div>
-                <!--<h5> <em> Soy programadora </em> </h5> -->
             </div>
             <hr>
                 <span id="rating">
@@ -67,18 +66,7 @@ $user = getUser($oferta['idOfertante'],$mysqli);
                         if($valorar)echo '</a>';
                     }
                     ?>
-                    <!--
-                    <span class="glyphicon glyphicon-star estrella"></span>
-                    <span class="glyphicon glyphicon-star estrella"></span>
-                    <span class="glyphicon glyphicon-star-empty estrella"></span>
-                    <span class="glyphicon glyphicon-star-empty estrella"></span>
-                    <span class="glyphicon glyphicon-star-empty estrella"></span>
-                    -->
                 </span>
-            <!--
-            <h6><strong>Registrado desde:</strong></h6>
-            <span id="fecha_registro"> Abril 2015</span>
-            -->
             <h6><strong>País:</strong></h6>
             <span id="nacionalidad">
                 <?php //Nacionalidad Ofertante
@@ -194,11 +182,7 @@ $user = getUser($oferta['idOfertante'],$mysqli);
                     printf("%s",$oferta['descripcion']);
                 ?>
             </p>
-            <!-- <div id="location-map">
-                 <h4> Mapa </h4>
-                 <hr>
-                 <div id="map"></div>
-             </div>-->
+
             <div id="tag-list">
                 <h3>
                     Temas relacionados
@@ -217,61 +201,12 @@ $user = getUser($oferta['idOfertante'],$mysqli);
 </div>
 
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h3>Inicia sesión para continuar</h3>
-                <h5>¿No tienes cuenta? ¡Registrate <a href="register.php"> aquí</a> en menos de un minuto!</h5>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
-                        <div class="col-xs-6">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    Iniciar sesión
-                </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal para login -->
+<?php include 'modal.php'?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script>
-    var map;
-    function initialize() {
-        var mapOptions = {
-            center: new google.maps.LatLng(40.405268, -3.834794),
-            zoom: 14
-        };
-        map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
 </body>
 </html>

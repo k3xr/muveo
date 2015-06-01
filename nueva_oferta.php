@@ -75,13 +75,6 @@ if (login_check($mysqli) == true) {
                         <div class="col-sm-4">
                             <input id="precio" name="precio" type="text" class="form-control">
                             &nbsp;€/hora
-                            <!-- Tasa -->
-                            <!--<select id="precio_tiempo" class="form-control">
-                                    <option>Por hora</option>
-                                    <option>Por semana</option>
-                                    <option>Por mes</option>
-                                    <option>Total</option>
-                            </select>-->
                         </div>
                     </div>
                 </div>
@@ -144,53 +137,18 @@ if (login_check($mysqli) == true) {
                     </div>
                 </div>
                 <!-- Submit -->
-                <!-- <div class="col-sm-offset-6 col-sm-2"> -->
                 <hr>
                 <button id="create" type="submit" class="btn btn-success">Crear oferta</button>
                 <button id="back" class="btn btn-primary" onclick="history.back()">Volver</button>
-                <!-- </div> -->
             </form>
         </section>
     </div>
 </div>
-<!-- Footer -->
-<footer id="lema" class="">
-    © muveo.sytes.net 2015
-</footer>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
-<script>
-    function addTema(){
-        var tag = document.getElementById("tema").value;
-        tag = $.trim(tag);
-        if(tag===""){
-            return;
-        }
-//           var options = {delay: {"show": 100, "hide":1100}, trigger: "click"}
-//           $("#addTopic").popover(options);
-        var arrayTemas = [];
-        $( "td > input" ).each( function() {
-            arrayTemas.push( $( this ).val() );
-        });
-        var added = $.inArray(tag.toLowerCase(),arrayTemas);
-        if( added < 0 ){
-            arrayTemas.push(tag);
-            var input = document.createElement('tr');
-            input.innerHTML = "<td id=tag"+arrayTemas.length+
-            "><input type=\"hidden\" name=\"tag"+arrayTemas.length+"\" value=\""+tag.toLowerCase()+"\">"+tag+
-            "<button type=\"button\" class=\"btn deleteTag label label-danger\">Eliminar</button></td>"
-            $("#tags").append(input);
-            $("button.deleteTag").bind("click",function(){
-                $(this).closest("td").remove();
-            });
-        }
-        else{
-//               $("#addTopic").popover("show");
-//               onClick=\"delTema()\"
-        }
-    }
-</script>
+<script src="js/temas.js"></script>
 </body>
 </html>

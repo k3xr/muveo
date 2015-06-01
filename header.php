@@ -2,14 +2,6 @@
 
 echo '<div class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff">';
 
-?>
-
-<?php
-if (isset($_GET['error'])) {
-    echo '<div class="alert alert-danger text-center v-center" role="alert">Nombre de usuario o
-        password incorrectos</div>';
-}
-
 include_once 'php/functions.php';
 
 echo '<div class="container">
@@ -35,7 +27,11 @@ if (!login_check($mysqli)) {
     echo'
         <script type="text/JavaScript" src="js/sha512.js"></script>
         <script type="text/JavaScript" src="js/forms.js"></script>
-        <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">
+        <form class="navbar-form navbar-right" role="search" action="php/process_login.php" method="post" name="login_form">';
+        if (isset($_GET['error'])) {
+  echo '<span class="" style="color: darkred; text-align: center"><small>Usuario o contraseña incorrectos</small></span>';
+}
+  echo '
             <div class="form-group">
                 <input type="text" name="username" class="form-control input-sm" placeholder="Usuario">
             </div>

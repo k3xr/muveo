@@ -227,12 +227,6 @@ function matching($word, $mysqli){
     return false;
 }
 
-function crear_contrato($idUsuario,$idOferta,$mysqli){
-    $date = date("YY-MM-DD");
-    $mysqli->query('INSERT INTO Contrato (idUsuario, idOferta, fechaContratacion, valoracion) VALUES
-                      ('.$idUsuario.', '.$idOferta.', '.$date.', 0)');
-}
-
 function getPaises($paischecked){
     $array = explode("\n", file_get_contents('paises.txt'));
     foreach($array as $pais){
@@ -304,34 +298,6 @@ function getAnunciante($idOferta, $mysqli){
     array_push($array, $anunciante);
   }
   return $array;
-}
-
-function valorar($idOferta, $idUsuario, $valoracion, $mysqli){
-    $mysqli->query('Update Contrato set valoracion='.$valoracion.' where idUsuario='.$idUsuario.' and idOferta='.$idOferta);
-    actualizarValOferta($idOferta,$mysqli);
-    actualizarValUsuario($idUsuario,$mysqli);
-}
-
-function actualizarValOferta($idOferta, $mysqli){
-    $total=0;
-    $count=0;
-    foreach ($mysqli->query("SELECT * FROM Contrato WHERE idOferta=" . $idOferta) as $contrato){
-        $total += $contrato['valoracion'];
-        $count++;
-    }
-    $total = $total/$count;
-    $mysqli->query('Update Oferta set valoracion='.$total.' where idOferta='.$idOferta);
-}
-
-function actualizarValUsuario($idUsuario, $mysqli){
-    $total=0;
-    $count=0;
-    foreach ($mysqli->query("SELECT * FROM Oferta WHERE idOfertante=" . $idUsuario) as $oferta){
-        $total += $oferta['valoracion'];
-        $count++;
-    }
-    $total = $total/$count;
-    $mysqli->query('Update Usuario set valoracion='.$total.' where idUsuario='.$idUsuario);
 }
 
 function tieneContrato($user, $oferta, $mysqli){

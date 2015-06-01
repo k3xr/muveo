@@ -56,7 +56,6 @@ $user = getUser($id,$mysqli);
                             <button id=\"editar_preferencias\" class=\"btn btn-primary\">Editar perfil</button>
                         </a>
                         ");
-                # glyphicon glyphicon-cog
             }
             ?>
         </aside>
@@ -114,7 +113,6 @@ $user = getUser($id,$mysqli);
             }
             ?>
             <hr/>
-<!--            <ul class="list-group" >-->
               <div class="panel-group" id="acordeon" role="tablist" aria-multiselectable="true">
                 <?php
                 if($user['tipoUsuario']==1) {//Ofertante
@@ -164,7 +162,6 @@ $user = getUser($id,$mysqli);
                     $array = getContratadas($user['idUsuario'], $mysqli);
                     foreach ($array as $oferta) {
                       $datosOferta = getOferta($oferta['idOferta'], $mysqli);
-//                      $anunciante = getAnunciante($oferta['idOferta'], $mysqli);
                       echo
                       '
                       <div class="panel panel-default">
@@ -201,51 +198,15 @@ $user = getUser($id,$mysqli);
                     }
                 }
                 ?>
-<!--            </ul>-->
               </div>
         </div>
     </div>
 </div>
-<!-- Footer -->
 
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h3>Inicia sesión para continuar</h3>
-                <h5>¿No tienes cuenta? ¡Registrate <a href=""> aquí</a> en menos de un minuto!</h5>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
-                        <div class="col-xs-6">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    Iniciar sesión
-                </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<?php
+include 'modal.php';
+?>
 <!-- Modal para login -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

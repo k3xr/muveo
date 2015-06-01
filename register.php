@@ -25,7 +25,7 @@ if (!empty($error_msg)) {
 <!-- Header -->
 <?php include 'header.php'; ?>
 <!-- Header End-->
-        <div class="container main-container">
+        <div class="container main-container well">
             <div class="row">
                 <section>
                     <h2><strong>Registrar una cuenta</strong></h2>
@@ -109,54 +109,10 @@ if (!empty($error_msg)) {
                 </section>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer id="lema" class="">
-            © muveo.sytes.net 2015
-        </footer>
-
-
-
-
 <!-- Modal para login -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h3>Inicia sesión para continuar</h3>
-                <h5>¿No tienes cuenta? ¡Registrate <a href=""> aquí</a> en menos de un minuto!</h5>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputUsername" class="col-xs-4 control-label"> Nombre de usuario </label>
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" id="inputUsername" placeholder="Usuario">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-xs-4 control-label"> Contraseña </label>
-                        <div class="col-xs-6">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                    Iniciar sesión
-                </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal para login -->
+<?php
+include 'modal.php';
+?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -166,11 +122,6 @@ if (!empty($error_msg)) {
     $('#password').focus(function() {
         $("#passTooltip").slideToggle("slow");
     });
-    /*
-     $('#password').attr("data-toggle","tooltip");
-     $('#password').attr("data-placement","right");
-     $('#password').attr("title","La contraseña debe tener al menos 6 caracteres, 1 mayúscula y 1 número");
-     */
     $('#password').blur(function(){
         $("#passTooltip").slideToggle("slow");
     });
